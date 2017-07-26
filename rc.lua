@@ -451,7 +451,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, "s", function () awful.spawn("slack") end),
     awful.key({ modkey }, "a", function () awful.spawn("spotify") end),
     awful.key({ modkey, "Shift" }, "a", function () awful.spawn("pavucontrol") end),
-    awful.key({ modkey, "Shift" }, "l", function () awful.spawn("lxappearance") end),
+    awful.key({ modkey, "Shift" }, "g", function () awful.spawn("lxappearance") end),
 
     -- Default
     --[[ Menubar
