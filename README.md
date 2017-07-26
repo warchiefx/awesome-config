@@ -14,7 +14,6 @@ Required: AwesomeWM 4.2+
 
 ## Recommended software
 
-- volumeicon-alsa: volume icon
 - lxappearence: changing GTK themes/icons
 - autorandr: automatic loading of display config
 - xscreensaver: screen locking
@@ -25,3 +24,9 @@ Required: AwesomeWM 4.2+
 - nm-applet: control network connections
 - pavucontrol: control PulseAudio
 - scrot: for taking screenshots
+- nitrogen: wallpaper setter
+- mate-media: for mate-volume-control-applet
+- mate-settings-daemon: general setup/GTK themes
+- mate-power-manager: display/power control
+- zeal: coding documentation
+- enpass: password manager
