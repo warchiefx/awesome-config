@@ -1,0 +1,19 @@
+[submodule "cyclefocus"]
+    path = cyclefocus
+    url = https://github.com/blueyed/awesome-cyclefocus
+
+[submodule "sharedtags"]
+    path = sharedtags
+    url = https://github.com/Drauthius/awesome-sharedtags
+
+[submodule "lain"]
+    path = lain
+    url = https://github.com/copycat-killer/lain.git
+
+[submodule "tyrannical"]
+    path = tyrannical
+    url = https://github.com/Elv13/tyrannical.git
+
+[submodule "freedesktop"]
+    path = freedesktop
+    url = https://github.com/copycat-killer/awesome-freedesktop.git
