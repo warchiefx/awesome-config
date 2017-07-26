@@ -16,3 +16,4 @@ Required: AwesomeWM 4.2+
 - slack
 - telegram-desktop
 - chromimu/firefox
+- autorandr
