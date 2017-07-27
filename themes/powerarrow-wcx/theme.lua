@@ -15,13 +15,14 @@ local os    = { getenv = os.getenv }
 local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/powerarrow-wcx"
 theme.wallpaper                                 = theme.dir .. "/wall.png"
-theme.font                                      = "Hack 8"
+theme.font                                      = "Bitstream Vera Sans 9"
 theme.fg_normal                                 = "#DDDDFF"
 theme.fg_focus                                  = "#dddddd"
 theme.fg_urgent                                 = "#333333"
 theme.bg_normal                                 = "#000000"
 theme.bg_focus                                  = "#212121"
 theme.bg_urgent                                 = "#1A1A1A"
+theme.bg_systray                                = "#000000"
 theme.border_width                              = 0
 theme.border_normal                             = "#3F3F3F"
 theme.border_focus                              = "#7F7F7F"
