@@ -402,7 +402,7 @@ globalkeys = awful.util.table.join(
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
-    awful.key({ modkey, "Shift"   }, "q", awesome.quit,
+    awful.key({ modkey, "Control"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
 
     awful.key({ altkey, "Shift"   }, "l",     function () awful.tag.incmwfact( 0.05)          end,
@@ -600,16 +600,16 @@ awful.rules.rules = {
       properties = { titlebars_enabled = true } },
 
     -- Browsers
-    {rule = {class="chromium"}, properties={ tag = tags[1], titlebars_enabled = false }},
+    {rule = {class="chromium", "Chromium"}, properties={ tag = tags[1], titlebars_enabled = false }},
 
     -- Dev
-    {rule_any = {class = {"emacs", "terminator"}}, properties = {tag = tags[4], titlebars_enabled = false}},
+    {rule_any = {class = {"Emacs", "emacs", "terminator", "Terminator"}}, properties = {tag = tags[4], titlebars_enabled = false}},
 
     -- Email
-    {rule = {class="evolution"}, properties={ tag = tags[3], titlebars_enabled = false4 }},
+    {rule = {class="evolution", "Evolution"}, properties={ tag = tags[3], titlebars_enabled = false4 }},
 
     -- Chat
-    {rule_any = {class = {"TelegramDesktop", "slack"}}, properties = {tag = tags[2], titlebars_enabled = false}},
+    {rule_any = {class = {"TelegramDesktop", "slack", "Slack"}}, properties = {tag = tags[2], titlebars_enabled = false}},
 }
 -- }}}
 
