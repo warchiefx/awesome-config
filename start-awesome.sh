@@ -1,4 +1,5 @@
 #!/bin/bash
+dbus-daemon --session &
 start-pulseaudio-x11
 eval `ssh-agent -s`
 dbus-update-activation-environment --systemd DISPLAY
