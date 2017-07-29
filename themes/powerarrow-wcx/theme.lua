@@ -329,6 +329,7 @@ function theme.at_screen_connect(s)
             -- arrl_dl,
             -- baticon,
             -- bat.widget,
+            arrl_dl,
             wibox.container.background(neticon),
             wibox.container.background(net.widget),
             wibox.widget.systray(),
