@@ -60,7 +60,7 @@ end
 
 run_once({ "nm-applet", "setxkbmap -layout us_intl -option ctrl:swapcaps", "autorandr --change",
            "mate-settings-daemon", "mate-power-manager", "volumeicon", "compton --backend glx --glx-use-copysubbuffermesa",
-           "xscreensaver -no-splash", "nitrogen --restore"})
+           "gnome-screensaver", "nitrogen --restore"})
 -- }}}
 
 -- {{{ Variable definitions
@@ -258,7 +258,8 @@ globalkeys = awful.util.table.join(
     -- https://github.com/copycat-killer/dots/blob/master/bin/screenshot
     awful.key({ }, "Print", function() os.execute("scrot 'screenshot-%Y%m%d-%R_$wx$h.png' -e 'mv $f ~/Pictures/'") end),
     awful.key({ "Shift" }, "Print", function() os.execute("scrot 'screenshot-%Y%m%d-%R_$wx$h.png' -e 'mv $f ~/Pictures/' -s") end),
-    awful.key({ }, "Pause",  function () awful.util.spawn("xscreensaver-command -lock") end),
+    awful.key({ }, "Pause",  function () awful.util.spawn("gnome-screensaver-command --lock") end),
+    awful.key({modkey, altkey}, "l",  function () awful.util.spawn("gnome-screensaver-command --lock") end),
 
     -- modkey+Tab: cycle through all clients.
     awful.key({ modkey }, "Tab", function(c)
@@ -288,10 +289,10 @@ globalkeys = awful.util.table.join(
 
     -- Brightness Keys
     awful.key({}, "XF86MonBrightnessUp", function()
-          awful.util.spawn("xbacklight -inc 10", false)
+          awful.util.spawn("acpilight -inc 10", false)
     end),
     awful.key({}, "XF86MonBrightnessDown", function()
-          awful.util.spawn("xbacklight -dec 10", false)
+          awful.util.spawn("acpilight -dec 10", false)
     end),
 
     -- Media Keys
@@ -600,7 +601,7 @@ awful.rules.rules = {
       properties = { titlebars_enabled = true } },
 
     -- Browsers
-    {rule = {class="chromium", "Chromium"}, properties={ tag = tags[1], titlebars_enabled = false }},
+    {rule = {class="chromium", "Chromium", "chromium-browser", "Chromium-browser"}, properties={ tag = tags[1], titlebars_enabled = false }},
 
     -- Dev
     {rule_any = {class = {"Emacs", "emacs", "terminator", "Terminator"}}, properties = {tag = tags[4], titlebars_enabled = false}},
