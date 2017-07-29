@@ -229,15 +229,28 @@ theme.volume = lain.widget.pulseaudio({
     end
 })
 
+function humanize_bytes(value)
+   suff = {"T", "G", "M", "K", "B"}
+   value = tonumber(value)
+   while(value > 1024 and #suff > 0) do
+      value = value / 1024
+      -- removing the first element is expensive in lua, do everything backwards
+      table.remove(suff)
+   end
+   return string.format("% 4s%s", string.format("%.4s", value), suff[#suff])
+end
+
 -- Net
 local neticon = wibox.widget.imagebox(theme.widget_net)
 local net = lain.widget.net({
     settings = function()
-        widget:set_markup(markup.font(theme.font,
-                          markup("#7AC82E", " " .. string.format("%s", net_now.received))
-                          .. " " ..
-                          markup("#46A8C3", " " .. string.format("%s", net_now.sent) .. " ")))
-    end
+       widget:set_markup(markup.font(theme.font,
+                                     markup("#7AC82E", " " .. humanize_bytes(net_now.received))
+                                        .. " " ..
+                                        markup("#46A8C3", " " .. humanize_bytes(net_now.sent) .. " ")))
+    end,
+    -- Ensure we get bytes
+    units = 1
 })
 
 -- Separators
