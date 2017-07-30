@@ -271,7 +271,7 @@ globalkeys = awful.util.table.join(
     end),
 
     -- Hotkeys
-    awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
+    awful.key({ modkey,           }, "?",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     -- Tag browsing
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
@@ -448,12 +448,12 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, "v", function () awful.spawn("xsel -b | xsel") end),
 
     -- User programs
-    awful.key({ modkey }, "e", function () awful.spawn(gui_editor) end),
+    awful.key({ modkey }, "e", function () run_once({gui_editor}) end),
     awful.key({ modkey }, "w", function () awful.spawn(browser) end),
-    awful.key({ modkey }, "p", function () awful.spawn("telegram-desktop") end),
-    awful.key({ modkey }, "t", function () awful.spawn("evolution") end),
-    awful.key({ modkey }, "s", function () awful.spawn("slack") end),
-    awful.key({ modkey }, "a", function () awful.spawn("spotify") end),
+    awful.key({ modkey }, "p", function () run_once({"telegram-desktop"}) end),
+    awful.key({ modkey }, "t", function () run_once({"evolution"}) end),
+    awful.key({ modkey }, "s", function () run_once({"slack"}) end),
+    awful.key({ modkey }, "a", function () run_once({"spotify"}) end),
     awful.key({ modkey, "Shift" }, "a", function () awful.spawn("pavucontrol") end),
     awful.key({ modkey, "Shift" }, "g", function () awful.spawn("lxappearance") end),
 
