@@ -256,8 +256,9 @@ root.buttons(awful.util.table.join(
 globalkeys = awful.util.table.join(
     -- Take a screenshot
     -- https://github.com/copycat-killer/dots/blob/master/bin/screenshot
-    awful.key({ }, "Print", function() os.execute("scrot 'screenshot-%Y%m%d-%R_$wx$h.png' -e 'mv $f ~/Pictures/'") end),
-    awful.key({ "Shift" }, "Print", function() os.execute("scrot 'screenshot-%Y%m%d-%R_$wx$h.png' -e 'mv $f ~/Pictures/' -s") end),
+    awful.key({ }, "Print", function() os.execute("scrot 'screenshot-%Y%m%d-%R_$wx$h.png' -q 100 -e 'mv $f ~/Pictures/'") end),
+    awful.key({ modkey }, "Print", function() os.execute("scrot 'screenshot-%Y%m%d-%R_$wx$h.png' -q 100 -e 'mv $f ~/Pictures/' -s") end),
+    awful.key({ alkey }, "Print", function() os.execute("scrot 'screenshot-%Y%m%d-%R_$wx$h.png' -q 100 -e 'mv $f ~/Pictures/' -u") end),
     awful.key({ }, "Pause",  function () awful.util.spawn("gnome-screensaver-command --lock") end),
     awful.key({modkey, altkey}, "l",  function () awful.util.spawn("gnome-screensaver-command --lock") end),
 
@@ -454,6 +455,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, "t", function () run_once({"evolution"}) end),
     awful.key({ modkey }, "s", function () run_once({"slack"}) end),
     awful.key({ modkey }, "a", function () run_once({"spotify"}) end),
+    awful.key({ modkey }, "i", function () awful.spawn("nautilus") end),
     awful.key({ modkey, "Shift" }, "a", function () awful.spawn("pavucontrol") end),
     awful.key({ modkey, "Shift" }, "g", function () awful.spawn("lxappearance") end),
 
