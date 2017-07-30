@@ -64,7 +64,7 @@ run_once({ "nm-applet", "setxkbmap -layout us_intl -option ctrl:swapcaps", "auto
 -- }}}
 
 -- {{{ Variable definitions
-local chosen_theme = "powerarrow-wcx"
+local chosen_theme = "gray-wcx"
 local modkey       = "Mod4"
 local altkey       = "Mod1"
 local terminal     = "terminator" or "xterm"
@@ -128,7 +128,7 @@ awful.layout.layouts = {
 }
 
 local tags = sharedtags({
-    { name = "1:main", layout = awful.layout.suit.max },
+    { name = "1:personal", layout = awful.layout.suit.max },
     { name = "2:chat", layout = awful.layout.suit.max, screen = 2 },
     { name = "3:mail", layout = awful.layout.suit.floating, screen = 2 },
     { name = "4:dev", layout = awful.layout.suit.floating },
