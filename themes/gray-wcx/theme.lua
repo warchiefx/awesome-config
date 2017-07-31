@@ -81,6 +81,7 @@ theme.titlebar_maximized_button_normal_inactive = theme.dir .. "/icons/titlebar/
 
 theme.notification_bg = theme.bg_normal
 theme.notification_fg = "#dddddd"
+theme.notification_font = "Hack 9"
 theme.notification_margin = 3
 theme.notification_shape = function(cr, width, height)
    gears.shape.rounded_rect(cr, width, height, 4)
