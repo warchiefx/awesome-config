@@ -256,9 +256,9 @@ root.buttons(awful.util.table.join(
 globalkeys = awful.util.table.join(
     -- Take a screenshot
     -- https://github.com/copycat-killer/dots/blob/master/bin/screenshot
-    awful.key({ }, "Print", function() os.execute("scrot 'screenshot-%Y%m%d-%R_$wx$h.png' -q 100 -e 'mv $f ~/Pictures/'") end),
-    awful.key({ modkey }, "Print", function() os.execute("scrot 'screenshot-%Y%m%d-%R_$wx$h.png' -q 100 -e 'mv $f ~/Pictures/' -s") end),
-    awful.key({ alkey }, "Print", function() os.execute("scrot 'screenshot-%Y%m%d-%R_$wx$h.png' -q 100 -e 'mv $f ~/Pictures/' -u") end),
+    awful.key({ }, "Print", function() awful.util.spawn("scrot 'screenshot-%Y%m%d-%R_$wx$h.png' -q 100 -e 'mv $f ~/Pictures/'") end),
+    awful.key({ altkey }, "Print", function() awful.util.spawn("scrot 'screenshot-%Y%m%d-%R_$wx$h.png' -q 100 -e 'mv $f ~/Pictures/' -s") end),
+    awful.key({ modkey, altkey }, "Print", function() awful.util.spawn("scrot 'screenshot-%Y%m%d-%R_$wx$h.png' -q 100 -e 'mv $f ~/Pictures/' -u") end),
     awful.key({ }, "Pause",  function () awful.util.spawn("gnome-screensaver-command --lock") end),
     awful.key({modkey, altkey}, "l",  function () awful.util.spawn("gnome-screensaver-command --lock") end),
 
