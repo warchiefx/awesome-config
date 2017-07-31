@@ -59,7 +59,7 @@ local function run_once(cmd_arr)
 end
 
 run_once({ "nm-applet", "setxkbmap -layout us_intl -option ctrl:swapcaps", "autorandr --change",
-           "mate-settings-daemon", "mate-power-manager", "volumeicon", "compton --backend glx --glx-use-copysubbuffermesa",
+           "mate-settings-daemon", "mate-power-manager", "volumeicon", "compton",
            "gnome-screensaver", "nitrogen --restore"})
 -- }}}
 
