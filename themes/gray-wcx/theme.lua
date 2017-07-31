@@ -79,6 +79,13 @@ theme.titlebar_maximized_button_normal_active   = theme.dir .. "/icons/titlebar/
 theme.titlebar_maximized_button_focus_inactive  = theme.dir .. "/icons/titlebar/maximized_focus_inactive.png"
 theme.titlebar_maximized_button_normal_inactive = theme.dir .. "/icons/titlebar/maximized_normal_inactive.png"
 
+theme.notification_bg = theme.bg_normal
+theme.notification_fg = "#dddddd"
+theme.notification_margin = 3
+theme.notification_shape = function(cr, width, height)
+   gears.shape.rounded_rect(cr, width, height, 4)
+end
+
 local markup = lain.util.markup
 local separators = lain.util.separators
 
