@@ -9,10 +9,10 @@ theme.dir                                       = os.getenv("HOME") .. "/.config
 -- theme.wallpaper                                 = theme.dir .. "/wall.png"
 theme.font                                      = "Iosevka Term 9"
 theme.fg_normal                                 = "#555555"
-theme.fg_focus                                  = "#dddddd"
+theme.fg_focus                                  = "#131112"
 theme.fg_urgent                                 = "#dddddd"
 theme.bg_normal                                 = "#151617fe"
-theme.bg_focus                                  = "#101010fe"
+theme.bg_focus                                  = "#D0D0D0fe"
 theme.bg_urgent                                 = "#bd2c40fe"
 theme.bg_systray                                = theme.bg_normal
 theme.border_width                              = 0
@@ -95,7 +95,7 @@ local clockicon = wibox.widget.imagebox(theme.widget_clock)
 local clock = awful.widget.watch(
     "date +'%a %d %b %I:%M%P'", 60,
     function(widget, stdout)
-        widget:set_markup(markup(theme.fg_focus, " " .. markup.font(theme.font, stdout)))
+        widget:set_markup(markup(theme.fg_urgent, " " .. markup.font(theme.font, stdout)))
     end
 )
 
@@ -104,7 +104,7 @@ theme.cal = lain.widget.calendar({
     attach_to = { clock.widget },
     notification_preset = {
         font = "xos4 Hack 10",
-        fg   = theme.fg_normal,
+        fg   = theme.fg_urgent,
         bg   = theme.bg_normal
     }
 })
@@ -134,21 +134,21 @@ theme.mpd = lain.widget.mpd({
 -- MEM
 local mem = lain.widget.mem({
     settings = function()
-        widget:set_markup(markup.font(theme.font, markup(theme.fg_normal, "mem ") .. markup(theme.fg_focus, mem_now.perc .. "% ")))
+        widget:set_markup(markup.font(theme.font, markup(theme.fg_normal, "mem ") .. markup(theme.fg_urgent, mem_now.perc .. "% ")))
     end
 })
 
 -- CPU
 local cpu = lain.widget.cpu({
     settings = function()
-        widget:set_markup(markup.font(theme.font, markup(theme.fg_normal, "cpu ") .. markup(theme.fg_focus, string.format("%2d", cpu_now.usage) .. "% ")))
+        widget:set_markup(markup.font(theme.font, markup(theme.fg_normal, "cpu ") .. markup(theme.fg_urgent, string.format("%2d", cpu_now.usage) .. "% ")))
     end
 })
 
 -- Coretemp
 local temp = lain.widget.temp({
     settings = function()
-        widget:set_markup(markup.font(theme.font, markup(theme.fg_normal, "temp ") .. markup(theme.fg_focus, coretemp_now .. "°C ")))
+        widget:set_markup(markup.font(theme.font, markup(theme.fg_normal, "temp ") .. markup(theme.fg_urgent, coretemp_now .. "°C ")))
     end,
     tempfile = "/sys/class/thermal/thermal_zone0/temp"
 })
@@ -222,7 +222,7 @@ local net = lain.widget.net({
 -- Separators
 local spr     = wibox.widget.textbox(' ')
 local arrl_dl = separators.arrow_left(theme.bg_focus, "alpha")
-local arrl_ld = separators.arrow_left("alpha", theme.bg_focus)
+local arrl_ld = separators.arrow_left("alpha", theme.bg_urgent)
 
 function theme.at_screen_connect(s)
     -- Quake application
@@ -287,7 +287,7 @@ function theme.at_screen_connect(s)
             clock,
             spr,
             arrl_ld,
-            wibox.container.background(s.mylayoutbox, theme.bg_focus),
+            wibox.container.background(s.mylayoutbox, theme.bg_urgent),
         },
     }
 end
