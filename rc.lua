@@ -1,7 +1,7 @@
 --[[
 
-     Awesome WM configuration template
-     github.com/copycat-killer
+   Ricardo's AwesomeWM Config
+   bitbuchet.com/warchiefx/awesome-config
 
 --]]
 
