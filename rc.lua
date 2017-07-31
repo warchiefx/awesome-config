@@ -703,6 +703,14 @@ client.connect_signal("focus",
             c.border_width = beautiful.border_width
             c.border_color = beautiful.border_focus
         end
+        c.opacity = 1
     end)
-client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+client.connect_signal("unfocus", function(c)
+                         c.border_color = beautiful.border_normal
+                         if not c.maximized then
+                            c.opacity = 0.8
+                         else
+                            c.opacity = 1
+                         end
+end)
 -- }}}
