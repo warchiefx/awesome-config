@@ -225,21 +225,32 @@ awful.util.mymainmenu = freedesktop.menu.build({
 --menubar.utils.terminal = terminal -- Set the Menubar terminal for applications that require it
 -- }}}
 
+function on_screen_change(s)
+   -- Wallpaper
+   -- if beautiful.wallpaper then
+   --     local wallpaper = beautiful.wallpaper
+   --     -- If wallpaper is a function, call it with the screen
+   --     if type(wallpaper) == "function" then
+   --         wallpaper = wallpaper(s)
+   --     end
+   --     gears.wallpaper.maximized(wallpaper, s, true)
+   -- end
+
+   -- Make nitrogen restore the wallpaper
+   awful.spawn.with_shell('nitrogen --restore')
+   awesome.restart()
+end
+
 -- {{{ Screen
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", function(s)
-    -- Wallpaper
-    -- if beautiful.wallpaper then
-    --     local wallpaper = beautiful.wallpaper
-    --     -- If wallpaper is a function, call it with the screen
-    --     if type(wallpaper) == "function" then
-    --         wallpaper = wallpaper(s)
-    --     end
-    --     gears.wallpaper.maximized(wallpaper, s, true)
-    -- end
-    -- Make nitrogen restore the wallpaper
-    awful.spawn.with_shell('nitrogen --restore')
+                         on_screen_change(s)
 end)
+
+screen.connect_signal("list", function(s)
+                         on_screen_change(s)
+end)
+
 -- Create a wibox for each screen and add it
 awful.screen.connect_for_each_screen(function(s) beautiful.at_screen_connect(s) end)
 -- }}}
