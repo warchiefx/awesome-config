@@ -613,6 +613,13 @@ awful.rules.rules = {
     { rule_any = { type = { "dialog", "normal" } },
       properties = { titlebars_enabled = true } },
 
+    {rule_any = {type={"dialog"}},
+     properties = {floating=true},
+     callback = function (c)
+        awful.placement.centered(c,nil)
+     end
+    },
+
     -- Browsers
     {rule = {class="chromium", "Chromium", "chromium-browser", "Chromium-browser"}, properties={ tag = tags[1], titlebars_enabled=false, maximized=true }},
 
