@@ -614,16 +614,16 @@ awful.rules.rules = {
       properties = { titlebars_enabled = true } },
 
     -- Browsers
-    {rule = {class="chromium", "Chromium", "chromium-browser", "Chromium-browser"}, properties={ tag = tags[1], titlebars_enabled = false }},
+    {rule = {class="chromium", "Chromium", "chromium-browser", "Chromium-browser"}, properties={ tag = tags[1], titlebars_enabled=false, maximized=true }},
 
     -- Dev
-    {rule_any = {class = {"Emacs", "emacs", "terminator", "Terminator"}}, properties = {tag = tags[4], titlebars_enabled = false}},
+    {rule_any = {class = {"Emacs", "emacs", "terminator", "Terminator"}}, properties = {tag = tags[4], titlebars_enabled=false}},
 
     -- Email
-    {rule = {class="evolution", "Evolution"}, properties={ tag = tags[3], titlebars_enabled = false4 }},
+    {rule = {class="evolution", "Evolution"}, properties={ tag = tags[3], titlebars_enabled=false, maximized=true }},
 
     -- Chat
-    {rule_any = {class = {"TelegramDesktop", "slack", "Slack"}}, properties = {tag = tags[2], titlebars_enabled = false}},
+    {rule_any = {class = {"TelegramDesktop", "slack", "Slack"}}, properties = {tag = tags[2], titlebars_enabled=false, maximized=true }},
 }
 -- }}}
 
