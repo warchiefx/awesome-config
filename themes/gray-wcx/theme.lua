@@ -8,7 +8,7 @@ local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/gray-wcx"
 -- theme.wallpaper                                 = theme.dir .. "/wall.png"
 theme.font                                      = "Iosevka Term 9"
-theme.fg_normal                                 = "#555555"
+theme.fg_normal                                 = "#666666"
 theme.fg_focus                                  = "#131112"
 theme.fg_urgent                                 = "#dddddd"
 theme.bg_normal                                 = "#151617fe"
@@ -83,6 +83,8 @@ theme.titlebar_maximized_button_normal_inactive = theme.dir .. "/icons/titlebar/
 theme.notification_bg = theme.bg_normal
 theme.notification_fg = "#dddddd"
 theme.notification_font = "Hack 9"
+theme.notification_border_width = 1
+theme.notification_border_color = theme.bg_normal
 theme.notification_margin = 3
 theme.notification_shape = function(cr, width, height)
    gears.shape.rounded_rect(cr, width, height, 4)
