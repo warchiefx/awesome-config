@@ -650,6 +650,9 @@ awful.rules.rules = {
 
     -- Chat
     {rule_any = {class = {"TelegramDesktop", "slack", "Slack"}}, properties = {tag = tags[2], titlebars_enabled=false, maximized=true }},
+
+    -- Zeal
+    {rule = {class = "Zeal"}, properties={ tag=tags[8], switchtotag=true,}},
 }
 -- }}}
 
