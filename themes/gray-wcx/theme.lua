@@ -151,7 +151,7 @@ local cpu = lain.widget.cpu({
 -- Coretemp
 local temp = lain.widget.temp({
     settings = function()
-        widget:set_markup(markup.font(theme.font, markup(theme.fg_normal, "temp ") .. markup(theme.fg_urgent, coretemp_now .. "°C ")))
+        widget:set_markup(markup.font(theme.font, markup(theme.fg_normal, "temp ") .. markup(theme.fg_urgent, string.format("%.2d", coretemp_now) .. "°C ")))
     end,
     tempfile = "/sys/class/thermal/thermal_zone0/temp"
 })
