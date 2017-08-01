@@ -13,11 +13,11 @@ theme.fg_focus                                  = "#131112"
 theme.fg_urgent                                 = "#dddddd"
 theme.bg_normal                                 = "#151617fe"
 theme.bg_focus                                  = "#D0D0D0fe"
-theme.bg_urgent                                 = "#bd2c40fe"
+theme.bg_urgent                                 = "#8d202ffe"
 theme.bg_systray                                = theme.bg_normal
 theme.border_width                              = 0
 theme.border_normal                             = "#3F3F3F"
-theme.border_focus                              = "#bd2c40"
+theme.border_focus                              = "#8d202f"
 theme.border_marked                             = "#333333"
 theme.tasklist_bg_focus                         = "#1A1A1A"
 theme.titlebar_bg_focus                         = theme.bg_normal
@@ -214,7 +214,7 @@ local neticon = wibox.widget.imagebox(theme.widget_net)
 local net = lain.widget.net({
     settings = function()
        widget:set_markup(markup.font(theme.font, markup(theme.fg_normal, "net") ..
-                                        markup("#bd2c40", " " .. humanize_bytes(net_now.received))
+                                        markup("#8d202f", " " .. humanize_bytes(net_now.received))
                                         .. " " ..
                                         markup("#dddddd", " " .. humanize_bytes(net_now.sent) .. " ")))
     end,
