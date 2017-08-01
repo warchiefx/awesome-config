@@ -70,7 +70,23 @@ local altkey       = "Mod1"
 local terminal     = "terminator" or "xterm"
 local editor       = os.getenv("EDITOR") or "nano" or "vi"
 local gui_editor   = "emacs"
-local browser      = "chromium"
+
+local default_apps = {}
+
+function get_default_app(tbl, var, mimetype, default)
+   awful.spawn.easy_async('xdg-mime query default '..mimetype, function(stdout, stderr, reason, exit_code)
+                             app = nil
+                             if exit_code == 0 then
+                                app = 'gtk-launch ' .. stdout
+                                tbl[var] = app
+                             else
+                                tbl[var] = default
+                             end
+   end)
+end
+
+get_default_app(default_apps, 'browser', 'text/html', 'chromium')
+get_default_app(default_apps, 'telegram', 'x-scheme-handler/tg', 'telegramdesktop')
 
 awful.util.terminal = terminal
 
@@ -464,8 +480,8 @@ globalkeys = awful.util.table.join(
 
     -- User programs
     awful.key({ modkey }, "e", function () run_once({gui_editor}) end),
-    awful.key({ modkey }, "w", function () awful.spawn(browser) end),
-    awful.key({ modkey }, "p", function () run_once({"telegram-desktop"}) end),
+    awful.key({ modkey }, "w", function () awful.spawn(default_apps['browser']) end),
+    awful.key({ modkey }, "p", function () run_once({default_apps['telegram']}) end),
     awful.key({ modkey }, "t", function () run_once({"evolution"}) end),
     awful.key({ modkey }, "s", function () run_once({"slack"}) end),
     awful.key({ modkey }, "a", function () run_once({"spotify"}) end),
