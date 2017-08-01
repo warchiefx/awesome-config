@@ -128,13 +128,16 @@ awful.layout.layouts = {
 }
 
 local tags = sharedtags({
-    { name = "1:personal", layout = awful.layout.suit.max },
-    { name = "2:chat", layout = awful.layout.suit.max, screen = 2 },
-    { name = "3:mail", layout = awful.layout.suit.floating, screen = 2 },
-    { name = "4:dev", layout = awful.layout.suit.floating },
-    { name = "5:work", screen = 2, layout = awful.layout.suit.floating },
-    { name = "6:media", layout = awful.layout.suit.max, screen = 2 },
-    { name = "7:misc", screen = 2, layout = awful.layout.floating }
+    { name = "I", layout = awful.layout.suit.max },
+    { name = "II", layout = awful.layout.suit.max},
+    { name = "III", layout = awful.layout.suit.floating},
+    { name = "IV", layout = awful.layout.suit.floating },
+    { name = "V", layout = awful.layout.suit.floating },
+    { name = "VI", screen = 2, layout = awful.layout.suit.max},
+    { name = "VII", screen = 2, layout = awful.layout.floating },
+    { name = "VIII", screen = 2, layout = awful.layout.floating },
+    { name = "IX", screen = 2, layout = awful.layout.floating },
+    { name = "X", screen = 2, layout = awful.layout.floating },
 })
 
 awful.util.taglist_buttons = awful.util.table.join(
@@ -536,7 +539,7 @@ clientkeys = awful.util.table.join(
 )
 
 -- Setup keybindings for sharedtags
-for i = 1, 9 do
+for i = 1, 10 do
     globalkeys = gears.table.join(globalkeys,
         -- View tag only.
         awful.key({ modkey }, "#" .. i + 9,
