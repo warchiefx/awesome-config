@@ -81,7 +81,7 @@ theme.titlebar_maximized_button_normal_active   = theme.dir .. "/icons/titlebar/
 theme.titlebar_maximized_button_focus_inactive  = theme.dir .. "/icons/titlebar/maximized_focus_inactive.png"
 theme.titlebar_maximized_button_normal_inactive = theme.dir .. "/icons/titlebar/maximized_normal_inactive.png"
 
-theme.notification_bg = theme.bg_normal
+theme.notification_bg = "#050607fe"
 theme.notification_fg = "#dddddd"
 theme.notification_font = "Hack 9"
 theme.notification_border_width = 1
