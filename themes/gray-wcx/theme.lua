@@ -8,6 +8,7 @@ local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/gray-wcx"
 -- theme.wallpaper                                 = theme.dir .. "/wall.png"
 theme.font                                      = "Iosevka Term 9"
+theme.taglist_font                              = theme.font
 theme.fg_normal                                 = "#666666"
 theme.fg_focus                                  = "#131112"
 theme.fg_urgent                                 = "#dddddd"
@@ -214,9 +215,9 @@ local neticon = wibox.widget.imagebox(theme.widget_net)
 local net = lain.widget.net({
     settings = function()
        widget:set_markup(markup.font(theme.font, markup(theme.fg_normal, "net") ..
-                                        markup("#bd2c40", " " .. humanize_bytes(net_now.received))
+                                        markup("#bd2c40", " " .. humanize_bytes(net_now.received))
                                         .. " " ..
-                                        markup("#dddddd", " " .. humanize_bytes(net_now.sent) .. " ")))
+                                        markup("#dddddd", "" .. humanize_bytes(net_now.sent) .. " ")))
     end,
     -- Ensure we get bytes
     units = 1

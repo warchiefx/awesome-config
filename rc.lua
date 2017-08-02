@@ -144,16 +144,16 @@ awful.layout.layouts = {
 }
 
 local tags = sharedtags({
-    { name = "I", layout = awful.layout.suit.max },
-    { name = "II", layout = awful.layout.suit.max},
-    { name = "III", layout = awful.layout.suit.floating},
-    { name = "IV", layout = awful.layout.suit.floating },
-    { name = "V", layout = awful.layout.suit.floating },
-    { name = "VI", screen = 2, layout = awful.layout.suit.max},
-    { name = "VII", screen = 2, layout = awful.layout.floating },
-    { name = "VIII", screen = 2, layout = awful.layout.floating },
-    { name = "IX", screen = 2, layout = awful.layout.floating },
-    { name = "X", screen = 2, layout = awful.layout.floating },
+    { name = "", layout = awful.layout.suit.max },
+    { name = "", layout = awful.layout.suit.max },
+    { name = "", layout = awful.layout.suit.floating },
+    { name = "", layout = awful.layout.suit.floating },
+    { name = "", layout = awful.layout.suit.floating },
+    { name = "", screen = 2, layout = awful.layout.suit.max },
+    { name = "", screen = 2, layout = awful.layout.floating },
+    { name = "", screen = 2, layout = awful.layout.floating },
+    { name = "", screen = 2, layout = awful.layout.floating },
+    { name = "", screen = 2, layout = awful.layout.floating },
 })
 
 awful.util.taglist_buttons = awful.util.table.join(
@@ -256,8 +256,8 @@ function on_screen_change(s)
    -- end
 
    -- Make nitrogen restore the wallpaper
-   awful.spawn.with_shell('nitrogen --restore')
    awesome.restart()
+   awful.spawn.with_shell('nitrogen --restore')
 end
 
 -- {{{ Screen
