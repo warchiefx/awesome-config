@@ -256,8 +256,8 @@ function on_screen_change(s)
    -- end
 
    -- Make nitrogen restore the wallpaper
-   awesome.restart()
    awful.spawn.with_shell('nitrogen --restore')
+   awesome.restart()
 end
 
 -- {{{ Screen
@@ -643,7 +643,7 @@ awful.rules.rules = {
     {rule_any = {class={"chromium", "Chromium", "chromium-browser", "Chromium-browser"}}, properties={ tag = tags[1], titlebars_enabled=false, maximized=true }},
 
     -- Dev
-    {rule_any = {class = {"Emacs", "emacs", "terminator", "Terminator"}}, properties = {tag = tags[4], titlebars_enabled=false}},
+    {rule_any = {class = {"Emacs", "emacs", "terminator", "Terminator"}}, properties = {tag = tags[4], titlebars_enabled=false, switchtotag=true}},
 
     -- Email
     {rule_any = {class={"evolution", "Evolution"}}, properties={ tag = tags[3], titlebars_enabled=false, maximized=true }},
