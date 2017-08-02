@@ -8,6 +8,7 @@ local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/gray-wcx"
 -- theme.wallpaper                                 = theme.dir .. "/wall.png"
 theme.font                                      = "Iosevka Term 9"
+theme.taglist_font                              = "Hack 10"
 theme.fg_normal                                 = "#666666"
 theme.fg_focus                                  = "#131112"
 theme.fg_urgent                                 = "#dddddd"
@@ -80,7 +81,7 @@ theme.titlebar_maximized_button_normal_active   = theme.dir .. "/icons/titlebar/
 theme.titlebar_maximized_button_focus_inactive  = theme.dir .. "/icons/titlebar/maximized_focus_inactive.png"
 theme.titlebar_maximized_button_normal_inactive = theme.dir .. "/icons/titlebar/maximized_normal_inactive.png"
 
-theme.notification_bg = theme.bg_normal
+theme.notification_bg = "#000000fe"
 theme.notification_fg = "#dddddd"
 theme.notification_font = "Hack 9"
 theme.notification_border_width = 1
@@ -214,9 +215,9 @@ local neticon = wibox.widget.imagebox(theme.widget_net)
 local net = lain.widget.net({
     settings = function()
        widget:set_markup(markup.font(theme.font, markup(theme.fg_normal, "net") ..
-                                        markup("#bd2c40", " " .. humanize_bytes(net_now.received))
+                                        markup("#bd2c40", " " .. humanize_bytes(net_now.received))
                                         .. " " ..
-                                        markup("#dddddd", " " .. humanize_bytes(net_now.sent) .. " ")))
+                                        markup("#dddddd", "" .. humanize_bytes(net_now.sent) .. " ")))
     end,
     -- Ensure we get bytes
     units = 1
