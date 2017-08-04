@@ -150,10 +150,10 @@ local tags = sharedtags({
     { name = "", layout = awful.layout.suit.floating },
     { name = "", layout = awful.layout.suit.max },
     { name = "", screen = 2, layout = awful.layout.suit.floating },
-    { name = "", screen = 2, layout = awful.layout.floating },
-    { name = "", screen = 2, layout = awful.layout.floating },
-    { name = "", screen = 2, layout = awful.layout.floating },
-    { name = "", screen = 2, layout = awful.layout.floating },
+    { name = "", screen = 2, layout = awful.layout.floating },
+    { name = "", screen = 2, layout = awful.layout.floating },
+    { name = "", screen = 2, layout = awful.layout.floating },
+    { name = "", screen = 2, layout = awful.layout.floating },
 })
 
 awful.util.taglist_buttons = awful.util.table.join(
