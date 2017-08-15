@@ -9,6 +9,7 @@
 local awesome, client, screen, tag = awesome, client, screen, tag
 local ipairs, string, os, table, tostring, tonumber, type = ipairs, string, os, table, tostring, tonumber, type
 
+local repetitive    = require("repetitive")
 local gears         = require("gears")
 local awful         = require("awful")
                       require("awful.autofocus")
