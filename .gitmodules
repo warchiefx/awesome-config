@@ -17,6 +17,3 @@
 [submodule "freedesktop"]
 	path = freedesktop
 	url = https://github.com/copycat-killer/awesome-freedesktop.git
-[submodule "repetitive"]
-	path = repetitive
-	url = https://github.com/Elv13/repetitive.git
