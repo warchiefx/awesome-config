@@ -653,7 +653,7 @@ awful.rules.rules = {
     {rule_any = {class = {"TelegramDesktop", "slack", "Slack"}}, properties = {tag = tags[2], titlebars_enabled=false, maximized=true }},
 
     -- Music
-    {rule_any = {class = {"Spotify", 'spotify'}}, properties = {tag = tags[7], titlebars_enabled=true, maximized=false }},
+    {rule_any = {class = {"Spotify", "spotify"}, name = {"Spotify"}}, properties = {tag = tags[7], titlebars_enabled=true, maximized=false }},
 
     -- Zeal
     {rule = {class = "Zeal"}, properties={ tag=tags[8], switchtotag=true,}},
