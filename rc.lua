@@ -642,6 +642,7 @@ awful.rules.rules = {
 
     -- Browsers
     {rule_any = {class={"chromium", "Chromium", "chromium-browser", "Chromium-browser"}}, properties={ tag = tags[1], titlebars_enabled=false, maximized=true }},
+    {rule_any = {class={"firefox", "Firefox"}}, properties={ tag = tags[1], titlebars_enabled=false, maximized=true }},
 
     -- Dev
     {rule_any = {class = {"Emacs", "emacs", "terminator", "Terminator"}}, properties = {tag = tags[4], titlebars_enabled=false, switchtotag=true}},
