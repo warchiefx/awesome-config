@@ -641,11 +641,10 @@ awful.rules.rules = {
     },
 
     -- Browsers
-    {rule_any = {class={"chromium", "Chromium", "chromium-browser", "Chromium-browser"}}, properties={ tag = tags[1], titlebars_enabled=false, maximized=true }},
-    {rule_any = {class={"firefox", "Firefox"}}, properties={ tag = tags[1], titlebars_enabled=false, maximized=true }},
+    {rule_any = {class={"chromium", "Chromium", "chromium-browser", "Chromium-browser", "Navigator", "Firefox"}}, properties={ tag = tags[1], titlebars_enabled=false, maximized=true }},
 
     -- Dev
-    {rule_any = {class = {"Emacs", "emacs", "terminator", "Terminator"}}, properties = {tag = tags[4], titlebars_enabled=false, switchtotag=true}},
+    {rule_any = {class = {"Emacs", "emacs", "terminator", "Terminator", "code", "Code"}}, properties = {tag = tags[4], titlebars_enabled=false, switchtotag=true}},
 
     -- Email
     {rule_any = {class={"evolution", "Evolution"}}, properties={ tag = tags[3], titlebars_enabled=false, maximized=true }},
