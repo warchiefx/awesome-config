@@ -14,7 +14,7 @@ theme.fg_focus                                  = "#131112"
 theme.fg_urgent                                 = "#dddddd"
 theme.bg_normal                                 = "#14191efe"
 theme.bg_focus                                  = "#D0D0D0fe"
-theme.bg_urgent                                 = "#0e9e97fe"
+theme.bg_urgent                                 = "#31e183"
 theme.bg_systray                                = theme.bg_normal
 theme.border_width                              = 0
 theme.border_normal                             = "#3F3F3F"
@@ -230,7 +230,7 @@ local net = lain.widget.net({
 -- Separators
 local spr     = wibox.widget.textbox(' ')
 local arrl_dl = separators.arrow_left(theme.bg_focus, "alpha")
-local arrl_ld = separators.arrow_left("alpha", theme.bg_urgent)
+local arrl_ld = separators.arrow_left("alpha", "#252d35")
 
 function theme.at_screen_connect(s)
     -- Quake application
@@ -295,7 +295,7 @@ function theme.at_screen_connect(s)
             clock,
             spr,
             arrl_ld,
-            wibox.container.background(s.mylayoutbox, theme.bg_urgent),
+            wibox.container.background(s.mylayoutbox, "#252d35"),
         },
     }
 end
