@@ -64,10 +64,10 @@ run_once({ "nm-applet", "setxkbmap -layout us_intl -option ctrl:swapcaps", "auto
 -- }}}
 
 -- {{{ Variable definitions
-local chosen_theme = "gray-wcx-aurora"
+local chosen_theme = "gray-wcx"
 local modkey       = "Mod4"
 local altkey       = "Mod1"
-local terminal     = "terminator" or "xterm"
+local terminal     = "sakura" or "xterm"
 local editor       = os.getenv("EDITOR") or "nano" or "vi"
 local gui_editor   = "emacs"
 
@@ -644,7 +644,7 @@ awful.rules.rules = {
     {rule_any = {class={"chromium", "Chromium", "chromium-browser", "Chromium-browser", "Navigator", "Firefox"}}, properties={ tag = tags[1], titlebars_enabled=false, maximized=true }},
 
     -- Dev
-    {rule_any = {class = {"Emacs", "emacs", "terminator", "Terminator", "code", "Code"}}, properties = {tag = tags[4], titlebars_enabled=false, switchtotag=true}},
+    {rule_any = {class = {"Emacs", "emacs", "terminator", "Terminator", "code", "Code", "sakura", "Sakura"}}, properties = {tag = tags[4], titlebars_enabled=false, switchtotag=true}},
 
     -- Email
     {rule_any = {class={"evolution", "Evolution"}}, properties={ tag = tags[3], titlebars_enabled=false, maximized=true }},
