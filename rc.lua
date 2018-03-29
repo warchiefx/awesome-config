@@ -67,7 +67,7 @@ run_once({ "nm-applet", "setxkbmap -layout us_intl -option ctrl:swapcaps", "auto
 local chosen_theme = "gray-wcx-aurora"
 local modkey       = "Mod4"
 local altkey       = "Mod1"
-local terminal     = "terminator" or "xterm"
+local terminal     = "sakura" or "xterm"
 local editor       = os.getenv("EDITOR") or "nano" or "vi"
 local gui_editor   = "emacs"
 
@@ -86,7 +86,7 @@ function get_default_app(tbl, var, mimetype, default)
 end
 
 get_default_app(default_apps, 'browser', 'text/html', 'chromium')
-get_default_app(default_apps, 'telegram', 'x-scheme-handler/tg', 'telegramdesktop')
+-- get_default_app(default_apps, 'telegram', 'x-scheme-handler/tg', 'flatpak run org.telegram.desktop')
 
 awful.util.terminal = terminal
 
@@ -482,10 +482,10 @@ globalkeys = awful.util.table.join(
     -- User programs
     awful.key({ modkey }, "e", function () run_once({gui_editor}) end),
     awful.key({ modkey }, "w", function () awful.spawn(default_apps['browser']) end),
-    awful.key({ modkey }, "p", function () run_once({default_apps['telegram']}) end),
+    awful.key({ modkey }, "p", function () run_once({"flatpak run org.telegram.desktop"}) end),
     awful.key({ modkey }, "t", function () run_once({"evolution"}) end),
-    awful.key({ modkey }, "s", function () run_once({"slack"}) end),
-    awful.key({ modkey }, "a", function () run_once({"spotify"}) end),
+    awful.key({ modkey }, "s", function () run_once({"flatpak run com.slack.Slack"}) end),
+    awful.key({ modkey }, "a", function () run_once({"flatpak run com.spotify.Client"}) end),
     awful.key({ modkey }, "i", function () awful.spawn("nautilus") end),
     awful.key({ modkey, "Shift" }, "a", function () awful.spawn("pavucontrol") end),
     awful.key({ modkey, "Shift" }, "g", function () awful.spawn("lxappearance") end),
@@ -644,7 +644,7 @@ awful.rules.rules = {
     {rule_any = {class={"chromium", "Chromium", "chromium-browser", "Chromium-browser", "Navigator", "Firefox"}}, properties={ tag = tags[1], titlebars_enabled=false, maximized=true }},
 
     -- Dev
-    {rule_any = {class = {"Emacs", "emacs", "terminator", "Terminator", "code", "Code"}}, properties = {tag = tags[4], titlebars_enabled=false, switchtotag=true}},
+    {rule_any = {class = {"Emacs", "emacs", "terminator", "Terminator", "code", "Code", "sakura", "Sakura"}}, properties = {tag = tags[4], titlebars_enabled=false, switchtotag=true}},
 
     -- Email
     {rule_any = {class={"evolution", "Evolution"}}, properties={ tag = tags[3], titlebars_enabled=false, maximized=true }},
