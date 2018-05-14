@@ -16,7 +16,7 @@ Required: AwesomeWM 4.2+
 
 - lxappearence: changing GTK themes/icons
 - autorandr: automatic loading of display config
-- xscreensaver: screen locking
+- gnome-screensaver: screen locking
 - sakura: shell
 - emacs: editor
 - playerctl: control MPRIS music players via CLI
