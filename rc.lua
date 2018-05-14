@@ -483,7 +483,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, "e", function () run_once({gui_editor}) end),
     awful.key({ modkey }, "w", function () awful.spawn(default_apps['browser']) end),
     awful.key({ modkey }, "p", function () run_once({"flatpak run org.telegram.desktop"}) end),
-    awful.key({ modkey }, "t", function () run_once({"evolution"}) end),
+    awful.key({ modkey }, "t", function () run_once({"mailspring"}) end),
     awful.key({ modkey }, "s", function () run_once({"flatpak run com.slack.Slack"}) end),
     awful.key({ modkey }, "a", function () run_once({"flatpak run com.spotify.Client"}) end),
     awful.key({ modkey }, "i", function () awful.spawn("nautilus") end),
@@ -647,7 +647,7 @@ awful.rules.rules = {
     {rule_any = {class = {"Emacs", "emacs", "terminator", "Terminator", "code", "Code", "sakura", "Sakura"}}, properties = {tag = tags[4], titlebars_enabled=false, switchtotag=true}},
 
     -- Email
-    {rule_any = {class={"evolution", "Evolution"}}, properties={ tag = tags[3], titlebars_enabled=false, maximized=true }},
+    {rule_any = {class={"evolution", "Evolution", "mailspring", "Mailspring"}}, properties={ tag = tags[3], titlebars_enabled=false, maximized=true }},
 
     -- Chat
     {rule_any = {class = {"TelegramDesktop", "slack", "Slack"}}, properties = {tag = tags[2], titlebars_enabled=false, maximized=true }},
