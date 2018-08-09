@@ -117,28 +117,6 @@ theme.cal = lain.widget.calendar({
     }
 })
 
--- MPD
-local mpdicon = wibox.widget.imagebox(theme.widget_music)
-mpdicon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.spawn_with_shell(musicplr) end)))
-theme.mpd = lain.widget.mpd({
-    settings = function()
-        if mpd_now.state == "play" then
-            artist = " " .. mpd_now.artist .. " "
-            title  = mpd_now.title  .. " "
-            mpdicon:set_image(theme.widget_music_on)
-        elseif mpd_now.state == "pause" then
-            artist = " mpd "
-            title  = "paused "
-        else
-            artist = ""
-            title  = ""
-            mpdicon:set_image(theme.widget_music)
-        end
-
-        widget:set_markup(markup.font(theme.font, markup("#EA6F81", artist) .. title))
-    end
-})
-
 -- MEM
 local mem = lain.widget.mem({
     settings = function()
@@ -185,23 +163,23 @@ local bat = lain.widget.bat({
     end
 })
 
--- ALSA volume
-local volicon = wibox.widget.imagebox(theme.widget_vol)
-theme.volume = lain.widget.pulseaudio({
-    settings = function()
-        if volume_now.muted == "yes" then
-            volicon:set_image(theme.widget_vol_mute)
-        elseif tonumber(volume_now.left) == 0 then
-            volicon:set_image(theme.widget_vol_no)
-        elseif tonumber(volume_now.left) <= 50 then
-            volicon:set_image(theme.widget_vol_low)
-        else
-            volicon:set_image(theme.widget_vol)
-        end
+-- -- ALSA volume
+-- local volicon = wibox.widget.imagebox(theme.widget_vol)
+-- theme.volume = lain.widget.pulseaudio({
+--     settings = function()
+--         if volume_now.muted == "yes" then
+--             volicon:set_image(theme.widget_vol_mute)
+--         elseif tonumber(volume_now.left) == 0 then
+--             volicon:set_image(theme.widget_vol_no)
+--         elseif tonumber(volume_now.left) <= 50 then
+--             volicon:set_image(theme.widget_vol_low)
+--         else
+--             volicon:set_image(theme.widget_vol)
+--         end
 
-        widget:set_markup(markup.font(theme.font, markup(theme.fg_normal, "vol ") .. markup(theme.fg_focus, volume_now.left .. "% ")))
-    end
-})
+--         widget:set_markup(markup.font(theme.font, markup(theme.fg_normal, "vol ") .. markup(theme.fg_focus, volume_now.left .. "% ")))
+--     end
+-- })
 
 function humanize_bytes(value)
    suff = {"T", "G", "M", "K", "B"}
@@ -281,8 +259,8 @@ function theme.at_screen_connect(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             spr,
-            wibox.container.background(mpdicon),
-            wibox.container.background(theme.mpd.widget),
+            -- wibox.container.background(mpdicon),
+            -- wibox.container.background(theme.mpd.widget),
             wibox.container.background(cpu.widget),
             mem.widget,
             wibox.container.background(temp.widget),
