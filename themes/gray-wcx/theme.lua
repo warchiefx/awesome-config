@@ -290,7 +290,6 @@ function theme.at_screen_connect(s)
             -- bat.widget,
             wibox.container.background(net.widget),
             spr,
-            bat,
             wibox.widget.systray(),
             spr,
             clock,
