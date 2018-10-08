@@ -8,10 +8,10 @@ local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/gray-wcx"
 -- theme.wallpaper                                 = theme.dir .. "/wall.png"
 theme.font                                      = "Iosevka Term 9"
-theme.taglist_font                              = "Hack 10"
+theme.taglist_font                              = "Iosevka Term 10"
 theme.fg_normal                                 = "#666666"
 theme.fg_focus                                  = "#131112"
-theme.fg_urgent                                 = "#dddddd"
+theme.fg_urgent                                 = "#ddddd"
 theme.bg_normal                                 = "#151617fe"
 theme.bg_focus                                  = "#D0D0D0fe"
 theme.bg_urgent                                 = "#bd2c40fe"
@@ -25,7 +25,7 @@ theme.titlebar_bg_focus                         = theme.bg_normal
 theme.titlebar_bg_normal                        = theme.bg_normal
 theme.titlebar_fg_normal                        = theme.fg_normal
 theme.titlebar_fg_focus                         = theme.fg_normal
--- theme.taglist_fg_occupied                       = ""
+theme.taglist_fg_occupied                       = "#666666"
 -- theme.taglist_bg_occupied                       = ""
 theme.taglist_fg_empty                          = "#2e2e2e"
 -- theme.taglist_bg_empty                          = ""
@@ -219,9 +219,9 @@ local neticon = wibox.widget.imagebox(theme.widget_net)
 local net = lain.widget.net({
     settings = function()
        widget:set_markup(markup.font(theme.font, markup(theme.fg_normal, "net") ..
-                                        markup("#bd2c40", " " .. humanize_bytes(net_now.received))
+                                        markup("#bd2c40", " ⇃" .. humanize_bytes(net_now.received))
                                         .. " " ..
-                                        markup("#dddddd", "" .. humanize_bytes(net_now.sent) .. " ")))
+                                        markup("#dddddd", "↿" .. humanize_bytes(net_now.sent) .. " ")))
     end,
     -- Ensure we get bytes
     units = 1
@@ -290,6 +290,7 @@ function theme.at_screen_connect(s)
             -- bat.widget,
             wibox.container.background(net.widget),
             spr,
+            bat,
             wibox.widget.systray(),
             spr,
             clock,

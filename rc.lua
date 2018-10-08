@@ -59,7 +59,7 @@ local function run_once(cmd_arr)
 end
 
 run_once({ "nm-applet", "setxkbmap -layout us_intl -option ctrl:swapcaps", "autorandr --change",
-           "mate-settings-daemon", "mate-power-manager", "volumeicon", "compton",
+           "volumeicon", "compton",
            "gnome-screensaver", "nitrogen --restore"})
 -- }}}
 
@@ -321,10 +321,10 @@ globalkeys = awful.util.table.join(
 
     -- Brightness Keys
     awful.key({}, "XF86MonBrightnessUp", function()
-          awful.util.spawn("acpilight -inc 10", false)
+          awful.util.spawn("xbacklight -ctrl intel_backlight -inc 10", false)
     end),
     awful.key({}, "XF86MonBrightnessDown", function()
-          awful.util.spawn("acpilight -dec 10", false)
+          awful.util.spawn("xbacklight -ctrl intel_backlight -dec 10", false)
     end),
 
     -- Media Keys
@@ -483,7 +483,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, "e", function () run_once({gui_editor}) end),
     awful.key({ modkey }, "w", function () awful.spawn(default_apps['browser']) end),
     awful.key({ modkey }, "p", function () run_once({"flatpak run org.telegram.desktop"}) end),
-    awful.key({ modkey }, "t", function () run_once({"mailspring"}) end),
+    awful.key({ modkey }, "t", function () run_once({"evolution"}) end),
     awful.key({ modkey }, "s", function () run_once({"flatpak run com.slack.Slack"}) end),
     awful.key({ modkey }, "a", function () run_once({"flatpak run com.spotify.Client"}) end),
     awful.key({ modkey }, "i", function () awful.spawn("nautilus") end),
@@ -641,10 +641,11 @@ awful.rules.rules = {
     },
 
     -- Browsers
-    {rule_any = {class={"chromium", "Chromium", "chromium-browser", "Chromium-browser", "Navigator", "Firefox"}}, properties={ tag = tags[1], titlebars_enabled=false, maximized=true }},
+    {rule_any = {class={"chromium", "Chromium", "chromium-browser", "Chromium-browser", "Navigator", "Firefox"}}, properties={ titlebars_enabled=false, maximized=true }},
 
     -- Dev
     {rule_any = {class = {"Emacs", "emacs", "terminator", "Terminator", "code", "Code", "sakura", "Sakura"}}, properties = {tag = tags[4], titlebars_enabled=false, switchtotag=true}},
+    {rule_any = {class = {"jetbrains-pycharm", "jetbrains-webstorm"}}, properties = {titlebars_enabled=false}},
 
     -- Email
     {rule_any = {class={"evolution", "Evolution", "mailspring", "Mailspring"}}, properties={ tag = tags[3], titlebars_enabled=false, maximized=true }},
@@ -653,7 +654,7 @@ awful.rules.rules = {
     {rule_any = {class = {"TelegramDesktop", "slack", "Slack"}}, properties = {tag = tags[2], titlebars_enabled=false, maximized=true }},
 
     -- Music
-    {rule_any = {class = {"Spotify", "spotify"}, name = {"Spotify"}}, properties = {tag = tags[7], titlebars_enabled=true, maximized=false }},
+    {rule_any = {class = {"Spotify", "spotify"}, name = {"Spotify"}}, properties = {tag = tags[7], titlebars_enabled=false, maximized=false }},
 
     -- Zeal
     {rule = {class = "Zeal"}, properties={ tag=tags[8], switchtotag=true,}},

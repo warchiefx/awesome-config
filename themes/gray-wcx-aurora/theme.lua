@@ -5,7 +5,7 @@ local wibox = require("wibox")
 local os    = { getenv = os.getenv }
 
 local theme                                     = {}
-theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/gray-wcx"
+theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/gray-wcx-aurora"
 -- theme.wallpaper                                 = theme.dir .. "/wall.png"
 theme.font                                      = "Iosevka Term 9"
 theme.taglist_font                              = "Hack 10"
