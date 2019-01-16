@@ -61,8 +61,8 @@ local function run_once(cmd_arr)
     end
 end
 
--- run_once({ "nm-applet", "setxkbmap -layout us_intl -option ctrl:swapcaps", "autorandr --change",
---            "volumeicon", "compton", "gnome-screensaver", "nitrogen --restore", "rescuetime"})
+run_once({ "nm-applet", "setxkbmap -layout us_intl -option ctrl:swapcaps", "autorandr --change",
+           "volumeicon", "compton", "gnome-screensaver", "nitrogen --restore", "rescuetime"})
 -- }}}
 
 -- {{{ Variable definitions
