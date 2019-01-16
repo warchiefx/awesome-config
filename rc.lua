@@ -25,6 +25,9 @@ local freedesktop   = require("freedesktop")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- }}}
 
+-- Limit notification height
+naughty.config.defaults['icon_size'] = 50
+
 -- {{{ Error handling
 if awesome.startup_errors then
     naughty.notify({ preset = naughty.config.presets.critical,
@@ -54,13 +57,12 @@ local function run_once(cmd_arr)
         if firstspace then
             findme = cmd:sub(0, firstspace-1)
         end
-        awful.spawn.with_shell(string.format("pgrep -u $USER -x %s > /dev/null || (%s)", findme, cmd))
+        awful.spawn.easy_async(string.format("pgrep -u $USER -x %s > /dev/null || (%s)", findme, cmd))
     end
 end
 
-run_once({ "nm-applet", "setxkbmap -layout us_intl -option ctrl:swapcaps", "autorandr --change",
-           "volumeicon", "compton",
-           "gnome-screensaver", "nitrogen --restore"})
+-- run_once({ "nm-applet", "setxkbmap -layout us_intl -option ctrl:swapcaps", "autorandr --change",
+--            "volumeicon", "compton", "gnome-screensaver", "nitrogen --restore", "rescuetime"})
 -- }}}
 
 -- {{{ Variable definitions
@@ -85,38 +87,10 @@ function get_default_app(tbl, var, mimetype, default)
    end)
 end
 
-get_default_app(default_apps, 'browser', 'text/html', 'chromium')
+get_default_app(default_apps, 'browser', 'text/html', 'firefox')
 -- get_default_app(default_apps, 'telegram', 'x-scheme-handler/tg', 'flatpak run org.telegram.desktop')
 
 awful.util.terminal = terminal
-
--- -- Ignore the tag "exclusive" property for the following clients (matched by classes)
--- tyrannical.properties.intrusive = {
---     "ksnapshot"     , "pinentry"       , "gtksu"     , "kcalc"        , "xcalc"               ,
---     "feh"           , "Gradient editor", "About KDE" , "Paste Special", "Background color"    ,
---     "kcolorchooser" , "plasmoidviewer" , "Xephyr"    , "kruler"       , "plasmaengineexplorer",
--- }
-
--- -- Ignore the tiled layout for the matching clients
--- tyrannical.properties.floating = {
---     "MPlayer"      , "pinentry"        , "ksnapshot"  , "pinentry"     , "gtksu"          ,
---     "xine"         , "feh"             , "kmix"       , "kcalc"        , "xcalc"          ,
---     "yakuake"      , "Select Color$"   , "kruler"     , "kcolorchooser", "Paste Special"  ,
---     "New Form"     , "Insert Picture"  , "kcharselect", "mythfrontend" , "plasmoidviewer"
--- }
-
--- -- Make the matching clients (by classes) on top of the default layout
--- tyrannical.properties.ontop = {
---     "gnome-screenshot"
--- }
-
--- -- Force the matching clients (by classes) to be centered on the screen on init
--- tyrannical.properties.placement = {
---     kcalc = awful.placement.centered
--- }
-
--- tyrannical.settings.block_children_focus_stealing = true --Block popups ()
--- tyrannical.settings.group_children = true --Force popups/dialogs to have the same tags as the parent client
 
 awful.layout.layouts = {
    awful.layout.suit.floating,
@@ -255,9 +229,9 @@ function on_screen_change(s)
    --     gears.wallpaper.maximized(wallpaper, s, true)
    -- end
 
+   awesome.restart()
    -- Make nitrogen restore the wallpaper
    awful.spawn.with_shell('nitrogen --restore')
-   awesome.restart()
 end
 
 -- {{{ Screen
