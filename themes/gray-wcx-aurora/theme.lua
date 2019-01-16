@@ -7,8 +7,8 @@ local os    = { getenv = os.getenv }
 local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/gray-wcx-aurora"
 -- theme.wallpaper                                 = theme.dir .. "/wall.png"
-theme.font                                      = "Iosevka Term 9"
-theme.taglist_font                              = "Hack 10"
+theme.font                                      = "PragmataPro 9"
+theme.taglist_font                              = "PragmataPro 10"
 theme.fg_normal                                 = "#666666"
 theme.fg_focus                                  = "#131112"
 theme.fg_urgent                                 = "#dddddd"
@@ -87,7 +87,7 @@ theme.titlebar_maximized_button_normal_inactive = theme.dir .. "/icons/titlebar/
 
 theme.notification_bg = "#000000fe"
 theme.notification_fg = "#dddddd"
-theme.notification_font = "Hack 9"
+theme.notification_font = "Iosevka Term 9"
 theme.notification_opacity = 0.80
 theme.notification_max_height = 200
 theme.notification_icon_size = 50
