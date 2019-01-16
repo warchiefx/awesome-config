@@ -12,7 +12,7 @@ theme.taglist_font                              = "Hack 10"
 theme.fg_normal                                 = "#666666"
 theme.fg_focus                                  = "#131112"
 theme.fg_urgent                                 = "#dddddd"
-theme.bg_normal                                 = "#14191efe"
+theme.bg_normal                                 = "#000000fe"
 theme.bg_focus                                  = "#D0D0D0fe"
 theme.bg_urgent                                 = "#31e183"
 theme.bg_systray                                = theme.bg_normal
@@ -88,6 +88,9 @@ theme.titlebar_maximized_button_normal_inactive = theme.dir .. "/icons/titlebar/
 theme.notification_bg = "#000000fe"
 theme.notification_fg = "#dddddd"
 theme.notification_font = "Hack 9"
+theme.notification_opacity = 0.80
+theme.notification_max_height = 200
+theme.notification_icon_size = 50
 theme.notification_border_width = 1
 theme.notification_border_color = theme.bg_normal
 theme.notification_margin = 3
@@ -99,23 +102,12 @@ local markup = lain.util.markup
 local separators = lain.util.separators
 
 -- Textclock
-local clockicon = wibox.widget.imagebox(theme.widget_clock)
 local clock = awful.widget.watch(
     "date +'%a %d %b %I:%M%P'", 60,
     function(widget, stdout)
         widget:set_markup(markup(theme.fg_urgent, " " .. markup.font(theme.font, stdout)))
     end
 )
-
--- Calendar
-theme.cal = lain.widget.calendar({
-    attach_to = { clock.widget },
-    notification_preset = {
-        font = "xos4 Hack 10",
-        fg   = theme.fg_urgent,
-        bg   = theme.bg_normal
-    }
-})
 
 -- MEM
 local mem = lain.widget.mem({
@@ -163,24 +155,6 @@ local bat = lain.widget.bat({
     end
 })
 
--- -- ALSA volume
--- local volicon = wibox.widget.imagebox(theme.widget_vol)
--- theme.volume = lain.widget.pulseaudio({
---     settings = function()
---         if volume_now.muted == "yes" then
---             volicon:set_image(theme.widget_vol_mute)
---         elseif tonumber(volume_now.left) == 0 then
---             volicon:set_image(theme.widget_vol_no)
---         elseif tonumber(volume_now.left) <= 50 then
---             volicon:set_image(theme.widget_vol_low)
---         else
---             volicon:set_image(theme.widget_vol)
---         end
-
---         widget:set_markup(markup.font(theme.font, markup(theme.fg_normal, "vol ") .. markup(theme.fg_focus, volume_now.left .. "% ")))
---     end
--- })
-
 function humanize_bytes(value)
    suff = {"T", "G", "M", "K", "B"}
    value = tonumber(value)
@@ -193,7 +167,7 @@ function humanize_bytes(value)
 end
 
 -- Net
-local neticon = wibox.widget.imagebox(theme.widget_net)
+-- local neticon = wibox.widget.imagebox(theme.widget_net)
 local net = lain.widget.net({
     settings = function()
        widget:set_markup(markup.font(theme.font, markup(theme.fg_normal, "net") ..
@@ -264,9 +238,10 @@ function theme.at_screen_connect(s)
             wibox.container.background(cpu.widget),
             mem.widget,
             wibox.container.background(temp.widget),
-            -- baticon,
-            -- bat.widget,
             wibox.container.background(net.widget),
+            spr,
+            baticon,
+            bat.widget,
             spr,
             wibox.widget.systray(),
             spr,
