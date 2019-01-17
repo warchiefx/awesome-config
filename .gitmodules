@@ -10,10 +10,6 @@
 	path = lain
 	url = https://github.com/copycat-killer/lain.git
 
-[submodule "tyrannical"]
-	path = tyrannical
-	url = https://github.com/Elv13/tyrannical.git
-
 [submodule "freedesktop"]
 	path = freedesktop
 	url = https://github.com/copycat-killer/awesome-freedesktop.git
