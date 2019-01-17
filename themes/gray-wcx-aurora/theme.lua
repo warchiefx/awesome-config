@@ -87,7 +87,7 @@ theme.titlebar_maximized_button_normal_inactive = theme.dir .. "/icons/titlebar/
 
 theme.notification_bg = "#000000fe"
 theme.notification_fg = "#dddddd"
-theme.notification_font = "Iosevka Term 9"
+theme.notification_font = "Lato 10"
 theme.notification_opacity = 0.80
 theme.notification_max_height = 200
 theme.notification_icon_size = 50
@@ -126,9 +126,11 @@ local cpu = lain.widget.cpu({
 -- Coretemp
 local temp = lain.widget.temp({
     settings = function()
-        widget:set_markup(markup.font(theme.font, markup(theme.fg_normal, "temp ") .. markup(theme.fg_urgent, string.format("%.2d", coretemp_now) .. "°C ")))
+       if coretemp_now ~= nil then
+          widget:set_markup(markup.font(theme.font, markup(theme.fg_normal, "temp ") .. markup(theme.fg_urgent, string.format("%.2d", coretemp_now) .. "°C ")))
+       end
     end,
-    tempfile = "/sys/class/thermal/thermal_zone1/temp"
+    tempfile = "/sys/class/thermal/thermal_zone4/temp"
 })
 
 -- Battery
