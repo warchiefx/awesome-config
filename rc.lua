@@ -628,10 +628,10 @@ awful.rules.rules = {
     {rule_any = {class={"evolution", "Evolution", "mailspring", "Mailspring"}}, properties={ tag = tags[3], titlebars_enabled=false, maximized=true }},
 
     -- Chat
-    {rule_any = {class = {"TelegramDesktop", "slack", "Slack"}}, properties = {tag = tags[2], titlebars_enabled=false, maximized=true }},
+    {rule_any = {class = {"TelegramDesktop", "slack", "Slack"}}, properties = {tag = tags[2]}},
 
     -- Music
-    {rule_any = {class = {"Spotify", "spotify"}, name = {"Spotify"}}, properties = {tag = tags[7], titlebars_enabled=false, maximized=false }},
+    {rule_any = {class = {"Spotify", "spotify"}, name = {"Spotify"}}, properties = {tag = tags[7], maximized=false }},
 
     -- Zeal
     {rule = {class = "Zeal"}, properties={ tag=tags[8], switchtotag=true,}},
