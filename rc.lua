@@ -57,7 +57,10 @@ local function run_once(cmd_arr)
         if firstspace then
             findme = cmd:sub(0, firstspace-1)
         end
-        awful.spawn.easy_async(string.format("pgrep -u $USER -x %s > /dev/null || (%s)", findme, cmd))
+        awful.spawn.easy_async_with_shell(string.format("pgrep -u $USER -x %s > /dev/null || (%s)", findme, cmd),
+                               function(stdout, stderr, reason, exit_code)
+
+                               end)
     end
 end
 
@@ -75,7 +78,7 @@ local gui_editor   = "emacs"
 
 local default_apps = {}
 
-function get_default_app(tbl, var, mimetype, default)
+local function get_default_app(tbl, var, mimetype, default)
    awful.spawn.easy_async('xdg-mime query default '..mimetype, function(stdout, stderr, reason, exit_code)
                              app = nil
                              if exit_code == 0 then
@@ -172,7 +175,7 @@ awful.util.tasklist_buttons = awful.util.table.join(
                                  instance = nil
                              else
                                  instance = awful.menu.clients({ theme = { width = 250 } })
-                             end
+                            end
                         end
                      end),
                      awful.button({ }, 4, function ()
@@ -229,9 +232,9 @@ function on_screen_change(s)
    --     gears.wallpaper.maximized(wallpaper, s, true)
    -- end
 
-   awesome.restart()
    -- Make nitrogen restore the wallpaper
    awful.spawn.with_shell('nitrogen --restore')
+   awesome.restart()
 end
 
 -- {{{ Screen
