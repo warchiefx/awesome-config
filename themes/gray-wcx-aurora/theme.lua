@@ -7,7 +7,7 @@ local os    = { getenv = os.getenv }
 local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/gray-wcx-aurora"
 -- theme.wallpaper                                 = theme.dir .. "/wall.png"
-theme.font                                      = "PragmataPro 9"
+theme.font                                      = "PragmataPro 10"
 theme.taglist_font                              = "PragmataPro 10"
 theme.fg_normal                                 = "#666666"
 theme.fg_focus                                  = "#131112"
@@ -128,7 +128,7 @@ local temp = lain.widget.temp({
     settings = function()
         widget:set_markup(markup.font(theme.font, markup(theme.fg_normal, "temp ") .. markup(theme.fg_urgent, string.format("%.2d", coretemp_now) .. "°C ")))
     end,
-    tempfile = "/sys/class/thermal/thermal_zone4/temp"
+    tempfile = "/sys/class/thermal/thermal_zone1/temp"
 })
 
 -- Battery
@@ -155,7 +155,7 @@ local bat = lain.widget.bat({
     end
 })
 
-function humanize_bytes(value)
+local function humanize_bytes(value)
    suff = {"T", "G", "M", "K", "B"}
    value = tonumber(value)
    while(value > 1024 and #suff > 0) do
@@ -171,9 +171,9 @@ end
 local net = lain.widget.net({
     settings = function()
        widget:set_markup(markup.font(theme.font, markup(theme.fg_normal, "net") ..
-                                        markup("#0e9e97", " " .. humanize_bytes(net_now.received))
+                                        markup("#0e9e97", " ⇃" .. humanize_bytes(net_now.received))
                                         .. " " ..
-                                        markup("#dddddd", "" .. humanize_bytes(net_now.sent) .. " ")))
+                                        markup("#dddddd", "↿" .. humanize_bytes(net_now.sent) .. " ")))
     end,
     -- Ensure we get bytes
     units = 1
@@ -233,8 +233,6 @@ function theme.at_screen_connect(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             spr,
-            -- wibox.container.background(mpdicon),
-            -- wibox.container.background(theme.mpd.widget),
             wibox.container.background(cpu.widget),
             mem.widget,
             wibox.container.background(temp.widget),
