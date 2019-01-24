@@ -712,6 +712,28 @@ client.connect_signal("mouse::enter", function(c)
     end
 end)
 
+-- Only show titlebar for floating windows
+client.connect_signal("property::floating", function(c)
+                         if c.floating then
+                            awful.titlebar.show(c)
+                         else
+                            awful.titlebar.hide(c)
+                         end
+end)
+
+-- Disallow minimization
+client.connect_signal("property::minimized", function(c)
+                         c.minimized = false
+end)
+
+-- client.connect_signal("property::maximized", function(c)
+--                          if c.maximized then
+--                             awful.titlebar.hide(c)
+--                          else
+--                             awful.titlebar.show(c)
+--                          end
+-- end)
+
 -- client.connect_signal("property::geometry", function (c)
 --   delayed_call(function()
 --     gears.surface.apply_shape_bounding(c, gears.shape.rounded_rect, 15)
