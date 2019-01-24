@@ -181,6 +181,10 @@ local net = lain.widget.net({
     units = 1
 })
 
+
+local systray = wibox.widget.systray()
+systray.forced_width = 100
+
 -- Separators
 local spr     = wibox.widget.textbox(' ')
 local arrl_dl = separators.arrow_left(theme.bg_focus, "alpha")
@@ -243,7 +247,7 @@ function theme.at_screen_connect(s)
             baticon,
             bat.widget,
             spr,
-            wibox.widget.systray(),
+            systray,
             spr,
             clock,
             spr,
