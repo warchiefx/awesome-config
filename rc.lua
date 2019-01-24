@@ -65,7 +65,7 @@ local function run_once(cmd_arr)
 end
 
 run_once({ "nm-applet", "setxkbmap -layout us_intl -option ctrl:swapcaps", "autorandr --change",
-           "volumeicon", "compton", "gnome-screensaver", "nitrogen --restore", "rescuetime"})
+           "volumeicon", "compton", "gnome-screensaver"})
 -- }}}
 
 -- {{{ Variable definitions
@@ -602,13 +602,15 @@ awful.rules.rules = {
                      buttons = clientbuttons,
                      screen = awful.screen.preferred,
                      placement = awful.placement.no_overlap+awful.placement.no_offscreen,
-                     size_hints_honor = false
+                     size_hints_honor = true
      }
     },
 
     -- Titlebars
     { rule_any = { type = { "dialog", "normal" } },
       properties = { titlebars_enabled = true } },
+    -- { rule_any = { maximized = true },
+    --   properties = { titlebars_enabled = false }},
 
     {rule_any = {type={"dialog"}},
      properties = {floating=true},
@@ -621,11 +623,11 @@ awful.rules.rules = {
     {rule_any = {class={"chromium", "Chromium", "chromium-browser", "Chromium-browser", "Navigator", "Firefox"}}, properties={ titlebars_enabled=false, maximized=true }},
 
     -- Dev
-    {rule_any = {class = {"Emacs", "emacs", "terminator", "Terminator", "code", "Code", "sakura", "Sakura"}}, properties = {tag = tags[4], titlebars_enabled=false, switchtotag=true}},
-    {rule_any = {class = {"jetbrains-pycharm", "jetbrains-webstorm"}}, properties = {titlebars_enabled=false}},
+    {rule_any = {class = {"Emacs", "emacs", "terminator", "Terminator", "code", "Code", "sakura", "Sakura"}}, properties = {tag = tags[4], titlebars_enabled=true, switchtotag=true}},
+    {rule_any = {class = {"jetbrains-pycharm", "jetbrains-webstorm"}}, properties = {titlebars_enabled=true}},
 
     -- Email
-    {rule_any = {class={"evolution", "Evolution", "mailspring", "Mailspring"}}, properties={ tag = tags[3], titlebars_enabled=false, maximized=true }},
+    {rule_any = {class={"evolution", "Evolution", "mailspring", "Mailspring"}}, properties={ tag = tags[3], titlebars_enabled=true, maximized=true }},
 
     -- Chat
     {rule_any = {class = {"TelegramDesktop", "slack", "Slack"}}, properties = {tag = tags[2]}},
