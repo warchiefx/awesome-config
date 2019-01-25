@@ -713,13 +713,13 @@ client.connect_signal("mouse::enter", function(c)
 end)
 
 -- Only show titlebar for floating windows
-client.connect_signal("property::floating", function(c)
-                         if c.floating then
-                            awful.titlebar.show(c)
-                         else
-                            awful.titlebar.hide(c)
-                         end
-end)
+-- client.connect_signal("property::floating", function(c)
+--                          if c.floating or not c.maximized or not awful.screen.focused().selected_tag.layout ~= awful.layout.suit.max then
+--                             awful.titlebar.show(c)
+--                          else
+--                             awful.titlebar.hide(c)
+--                          end
+-- end)
 
 -- Disallow minimization
 client.connect_signal("property::minimized", function(c)
