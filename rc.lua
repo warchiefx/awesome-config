@@ -678,7 +678,9 @@ client.connect_signal("request::titlebars", function(c)
         end)
     )
 
-    awful.titlebar(c, {size = 16}) : setup {
+    local titlewidget = awful.titlebar.widget.titlewidget(c)
+    titlewidget.font = "PragmataPro 9"
+    awful.titlebar(c, {size = 16, font = "PragmataPro 9"}) : setup {
         { -- Left
             -- awful.titlebar.widget.iconwidget(c),
             buttons = buttons,
@@ -687,7 +689,7 @@ client.connect_signal("request::titlebars", function(c)
         { -- Middle
             { -- Title
                 align  = "center",
-                widget = awful.titlebar.widget.titlewidget(c)
+                widget = titlewidget
             },
             buttons = buttons,
             layout  = wibox.layout.flex.horizontal
