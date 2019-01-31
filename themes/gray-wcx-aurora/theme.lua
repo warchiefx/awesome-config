@@ -7,7 +7,7 @@ local os    = { getenv = os.getenv }
 local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/gray-wcx-aurora"
 -- theme.wallpaper                                 = theme.dir .. "/wall.png"
-theme.font                                      = "PragmataPro 10"
+theme.font                                      = "Iosevka Medium 10"
 theme.taglist_font                              = "PragmataPro 10"
 theme.fg_normal                                 = "#666666"
 theme.fg_focus                                  = "#131112"

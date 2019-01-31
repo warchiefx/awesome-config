@@ -679,8 +679,8 @@ client.connect_signal("request::titlebars", function(c)
     )
 
     local titlewidget = awful.titlebar.widget.titlewidget(c)
-    titlewidget.font = "PragmataPro 9"
-    awful.titlebar(c, {size = 16, font = "PragmataPro 9"}) : setup {
+    titlewidget.font = "Ioseveka Medium 8"
+    awful.titlebar(c, {size = 16, font = "Ioseveka Medium 8"}) : setup {
         { -- Left
             -- awful.titlebar.widget.iconwidget(c),
             buttons = buttons,
