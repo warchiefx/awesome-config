@@ -57,7 +57,10 @@ local function run_once(cmd_arr)
         if firstspace then
             findme = cmd:sub(0, firstspace-1)
         end
-        awful.spawn.with_shell(string.format("pgrep -u $USER -x %s > /dev/null || (%s)", findme, cmd))
+        awful.spawn.easy_async_with_shell(string.format("pgrep -u $USER -x %s > /dev/null || (%s)", findme, cmd),
+                               function(stdout, stderr, reason, exit_code)
+                                  -- Intentionally left blank
+                               end)
     end
 end
 
