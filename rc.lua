@@ -57,10 +57,7 @@ local function run_once(cmd_arr)
         if firstspace then
             findme = cmd:sub(0, firstspace-1)
         end
-        awful.spawn.easy_async_with_shell(string.format("pgrep -u $USER -x %s > /dev/null || (%s)", findme, cmd),
-                               function(stdout, stderr, reason, exit_code)
-
-                               end)
+        awful.spawn.with_shell(string.format("pgrep -u $USER -x %s > /dev/null || (%s)", findme, cmd))
     end
 end
 
@@ -234,7 +231,7 @@ function on_screen_change(s)
 
    -- Make nitrogen restore the wallpaper
    awful.spawn.with_shell('nitrogen --restore')
-   awesome.restart()
+   -- awesome.restart()
 end
 
 -- {{{ Screen
@@ -623,11 +620,11 @@ awful.rules.rules = {
     {rule_any = {class={"chromium", "Chromium", "chromium-browser", "Chromium-browser", "Navigator", "Firefox"}}, properties={ titlebars_enabled=false, maximized=true }},
 
     -- Dev
-    {rule_any = {class = {"Emacs", "emacs", "terminator", "Terminator", "code", "Code", "sakura", "Sakura"}}, properties = {tag = tags[4], titlebars_enabled=true, switchtotag=true}},
-    {rule_any = {class = {"jetbrains-pycharm", "jetbrains-webstorm"}}, properties = {titlebars_enabled=true}},
+    {rule_any = {class = {"Emacs", "emacs", "terminator", "Terminator", "code", "Code", "sakura", "Sakura"}}, properties = {tag = tags[4], switchtotag=true}},
+    {rule_any = {class = {"jetbrains-pycharm", "jetbrains-webstorm"}}, properties = {maximized = true}},
 
     -- Email
-    {rule_any = {class={"evolution", "Evolution", "mailspring", "Mailspring"}}, properties={ tag = tags[3], titlebars_enabled=true, maximized=true }},
+    {rule_any = {class={"evolution", "Evolution", "mailspring", "Mailspring"}}, properties={ tag = tags[3], maximized=true }},
 
     -- Chat
     {rule_any = {class = {"TelegramDesktop", "slack", "Slack"}}, properties = {tag = tags[2]}},
@@ -704,6 +701,10 @@ client.connect_signal("request::titlebars", function(c)
         },
         layout = wibox.layout.align.horizontal
     }
+
+    if c.maximized then
+       awful.titlebar.hide(c)
+    end
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.
@@ -744,22 +745,22 @@ end)
 
 -- No border for maximized clients
 -- Transparency for unfocused clients
--- client.connect_signal("focus",
---     function(c)
---         if c.maximized then -- no borders if only 1 client visible
---             c.border_width = 0
---         elseif #awful.screen.focused().clients > 1 then
---             c.border_width = beautiful.border_width
---             c.border_color = beautiful.border_focus
---         end
---         c.opacity = 1
---     end)
--- client.connect_signal("unfocus", function(c)
---                          c.border_color = beautiful.border_normal
---                          if not c.maximized then
---                             c.opacity = 0.8
---                          else
---                             c.opacity = 1
---                          end
--- end)
+client.connect_signal("focus",
+    function(c)
+        if c.maximized then -- no borders if only 1 client visible
+            c.border_width = 0
+        elseif #awful.screen.focused().clients > 1 then
+            c.border_width = beautiful.border_width
+            c.border_color = beautiful.border_focus
+        end
+        -- c.opacity = 1
+    end)
+client.connect_signal("unfocus", function(c)
+                         c.border_color = beautiful.border_normal
+                         -- if not c.maximized then
+                         --    c.opacity = 0.9
+                         -- else
+                         --    c.opacity = 1
+                         -- end
+end)
 -- }}}
