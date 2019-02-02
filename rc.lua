@@ -50,6 +50,8 @@ end
 -- }}}
 
 -- {{{ Autostart windowless processes
+local default_apps = {}
+
 local function run_once(cmd_arr)
     for _, cmd in ipairs(cmd_arr) do
         findme = cmd
@@ -64,20 +66,6 @@ local function run_once(cmd_arr)
     end
 end
 
-run_once({ "nm-applet", "setxkbmap -layout us_intl -option ctrl:swapcaps", "autorandr --change",
-           "volumeicon", "compton", "gnome-screensaver"})
--- }}}
-
--- {{{ Variable definitions
-local chosen_theme = "gray-wcx-aurora"
-local modkey       = "Mod4"
-local altkey       = "Mod1"
-local terminal     = "sakura" or "xterm"
-local editor       = os.getenv("EDITOR") or "nano" or "vi"
-local gui_editor   = "emacs"
-
-local default_apps = {}
-
 local function get_default_app(tbl, var, mimetype, default)
    awful.spawn.easy_async('xdg-mime query default '..mimetype, function(stdout, stderr, reason, exit_code)
                              app = nil
@@ -90,7 +78,31 @@ local function get_default_app(tbl, var, mimetype, default)
    end)
 end
 
-get_default_app(default_apps, 'browser', 'text/html', 'firefox')
+awesome.connect_signal("startup", function()
+                          get_default_app(default_apps, 'browser', 'text/html', 'firefox')
+                          run_once({ "nm-applet", "setxkbmap -layout us_intl -option ctrl:swapcaps", "autorandr --change",
+                                     "volumeicon", "gnome-screensaver"})
+end)
+
+awesome.connect_signal("exit", function(reason_restart)
+                          if reason_restart then
+                             -- Restarting
+                          else
+                             -- Shutting down
+                          end
+end)
+
+-- }}}
+
+-- {{{ Variable definitions
+local chosen_theme = "gray-wcx-aurora"
+local modkey       = "Mod4"
+local altkey       = "Mod1"
+local terminal     = "sakura" or "xterm"
+local editor       = os.getenv("EDITOR") or "nano" or "vi"
+local gui_editor   = "emacs"
+
+
 -- get_default_app(default_apps, 'telegram', 'x-scheme-handler/tg', 'flatpak run org.telegram.desktop')
 
 awful.util.terminal = terminal
