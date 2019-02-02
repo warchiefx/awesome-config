@@ -183,7 +183,7 @@ local net = lain.widget.net({
 
 
 local systray = wibox.widget.systray()
-systray.forced_width = 100
+-- systray.forced_width = 100
 
 -- Separators
 local spr     = wibox.widget.textbox(' ')
