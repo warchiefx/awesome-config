@@ -635,8 +635,8 @@ awful.rules.rules = {
     {rule_any = {class={"chromium", "Chromium", "chromium-browser", "Chromium-browser", "Navigator", "Firefox"}}, properties={ titlebars_enabled=false, maximized=true }},
 
     -- Dev
-    {rule_any = {class = {"Emacs", "emacs", "terminator", "Terminator", "code", "Code", "sakura", "Sakura"}}, properties = {tag = tags[4], switchtotag=true}},
-    {rule_any = {class = {"jetbrains-pycharm", "jetbrains-webstorm"}}, properties = {maximized = true}},
+    {rule_any = {class = {"Emacs", "emacs", "terminator", "Terminator", "code", "Code", "sakura", "Sakura"}}, properties = {tag = tags[4], switchtotag=true, titlebars_enabled=false}},
+    {rule_any = {class = {"jetbrains-pycharm", "jetbrains-webstorm"}}, properties = {maximized = true, titlebars_enabled=false}},
 
     -- Email
     {rule_any = {class={"evolution", "Evolution", "mailspring", "Mailspring"}}, properties={ tag = tags[3], maximized=true }},
