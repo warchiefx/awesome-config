@@ -1,0 +1,10 @@
+"sleep 0.1 && rofi -show combi -config /home/rrestituyo/.config/awesome/rofi.conf"
+   m:0xc + c:23
+
+# thumb wheel down => previous tab
+"xte 'keydown Control_L' 'key Page_Down' 'keyup Control_L'"
+    b:6
+
+# thumb wheel up => next tab
+"xte 'keydown Control_L' 'key Page_Up' 'keyup Control_L'"
+    b:7

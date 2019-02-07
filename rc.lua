@@ -81,7 +81,7 @@ end
 awesome.connect_signal("startup", function()
                           get_default_app(default_apps, 'browser', 'text/html', 'firefox')
                           run_once({ "nm-applet", "setxkbmap -layout us_intl -option ctrl:swapcaps", "autorandr --change",
-                                     "volumeicon", "gnome-screensaver", "solaar"})
+                                     "volumeicon", "gnome-screensaver", "solaar", "xbindkeys"})
 end)
 
 awesome.connect_signal("exit", function(reason_restart)
@@ -502,8 +502,8 @@ globalkeys = awful.util.table.join(
     -- Prompt
     awful.key({ modkey }, "r", launcher,
        {description = "run prompt", group = "launcher"}),
-    awful.key({ ctrlkey, altkey }, "Tab", launcher,
-       {description = "run prompt", group = "launcher"}),
+    -- awful.key({ ctrlkey, altkey }, "Tab", launcher,
+    --    {description = "run prompt", group = "launcher"}),
 
     awful.key({ modkey }, "x",
               function ()
