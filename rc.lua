@@ -81,7 +81,7 @@ end
 awesome.connect_signal("startup", function()
                           get_default_app(default_apps, 'browser', 'text/html', 'firefox')
                           run_once({ "nm-applet", "setxkbmap -layout us_intl -option ctrl:swapcaps", "autorandr --change",
-                                     "volumeicon", "gnome-screensaver"})
+                                     "volumeicon", "gnome-screensaver", "solaar"})
 end)
 
 awesome.connect_signal("exit", function(reason_restart)
