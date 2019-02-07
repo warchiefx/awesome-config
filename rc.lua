@@ -101,7 +101,7 @@ local altkey       = "Mod1"
 local terminal     = "sakura" or "xterm"
 local editor       = os.getenv("EDITOR") or "nano" or "vi"
 local gui_editor   = "emacs"
-local runner       = "rofi -combi-modi window,drun,run -show combi -modi combi -config ~/.config/awesome/rofi.conf"
+local runner       = "rofi -show combi -config ~/.config/awesome/rofi.conf"
 
 
 -- get_default_app(default_apps, 'telegram', 'x-scheme-handler/tg', 'flatpak run org.telegram.desktop')
@@ -271,6 +271,14 @@ root.buttons(awful.util.table.join(
     awful.button({ }, 5, awful.tag.viewprev)
 ))
 -- }}}
+
+function launcher()
+   if runner == nil then
+      awful.screen.focused().mypromptbox:run()
+   else
+      run_once({runner})
+   end
+end
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
@@ -492,13 +500,9 @@ globalkeys = awful.util.table.join(
         end)
     --]]
     -- Prompt
-    awful.key({ modkey }, "r", function ()
-          if runner == nil then
-             awful.screen.focused().mypromptbox:run()
-          else
-             run_once({runner})
-          end
-                               end,
+    awful.key({ modkey }, "r", launcher,
+       {description = "run prompt", group = "launcher"}),
+    awful.key({ ctrlkey, altkey }, "Tab", launcher,
        {description = "run prompt", group = "launcher"}),
 
     awful.key({ modkey }, "x",
