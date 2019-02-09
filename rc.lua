@@ -134,16 +134,16 @@ awful.layout.layouts = {
 }
 
 local tags = sharedtags({
-    { name = "", layout = awful.layout.suit.max },
-    { name = "", layout = awful.layout.suit.max },
-    { name = "", layout = awful.layout.suit.floating },
-    { name = "", layout = awful.layout.suit.floating },
-    { name = "", layout = awful.layout.suit.max },
-    { name = "", screen = 2, layout = awful.layout.suit.floating },
-    { name = "", screen = 2, layout = awful.layout.floating },
-    { name = "", screen = 2, layout = awful.layout.floating },
-    { name = "", screen = 2, layout = awful.layout.floating },
-    { name = "", screen = 2, layout = awful.layout.floating },
+    { name = "web", layout = awful.layout.suit.max },
+    { name = "chat", layout = awful.layout.suit.max },
+    { name = "mail", layout = awful.layout.suit.floating },
+    { name = "dev", layout = awful.layout.suit.floating },
+    { name = "work", layout = awful.layout.suit.max },
+    { name = "misc", screen = 2, layout = awful.layout.suit.floating },
+    { name = "media", screen = 2, layout = awful.layout.floating },
+    { name = "opt1", screen = 2, layout = awful.layout.floating },
+    { name = "opt2", screen = 2, layout = awful.layout.floating },
+    { name = "opt3", screen = 2, layout = awful.layout.floating },
 })
 
 awful.util.taglist_buttons = awful.util.table.join(
