@@ -1,71 +1,89 @@
-/******************************************************************************
- * ROFI Color theme
- * User: Rasi
- * Copyright: Rasmus Steinke
- ******************************************************************************/
 * {
-    selected-normal-foreground:  rgba ( 129, 147, 150, 100 % );
-    foreground:                  rgba ( 129, 147, 150, 100 % );
-    normal-foreground:           @foreground;
-    alternate-normal-background: rgba ( 0, 43, 55, 100 % );
-    red:                         rgba ( 220, 50, 47, 100 % );
-    selected-urgent-foreground:  rgba ( 218, 66, 129, 100 % );
-    blue:                        rgba ( 38, 139, 210, 100 % );
-    urgent-foreground:           rgba ( 218, 66, 129, 100 % );
-    alternate-urgent-background: rgba ( 0, 43, 55, 100 % );
-    active-foreground:           rgba ( 0, 142, 212, 100 % );
-    lightbg:                     rgba ( 238, 232, 213, 100 % );
-    selected-active-foreground:  rgba ( 0, 142, 212, 100 % );
-    alternate-active-background: rgba ( 0, 43, 55, 100 % );
-    background:                  rgba ( 0, 43, 55, 100 % );
-    bordercolor:                 rgba ( 0, 43, 55, 100 % );
+    xbg:    #110B1A;
+    xfg:    #FDFDFD;
+    x0:     #282A36;
+    x1:     #F37F97;
+    x2:     #5ADECD;
+    x3:     #F2A272;
+    x4:     #8897F4;
+    x5:     #C574DD;
+    x6:     #79E6F3;
+    x7:     #FDFDFD;
+    x8:     #414458;
+    x9:     #FF4971;
+    x10:    #18E3C8;
+    x11:    #FF8037;
+    x12:    #556FFF;
+    x13:    #B043D1;
+    x14:    #3FDCEE;
+    x15:    #FDFDFD;
+    active-background:           rgba ( 39, 50, 56, 100 % );
+    active-foreground:           rgba ( 128, 203, 196, 100 % );
+    alternate-active-background: rgba ( 39, 50, 56, 100 % );
+    alternate-active-foreground: @active-foreground;
+    alternate-normal-background: rgba ( 39, 50, 56, 100 % );
     alternate-normal-foreground: @foreground;
-    normal-background:           rgba ( 0, 43, 55, 100 % );
-    lightfg:                     rgba ( 88, 104, 117, 100 % );
-    selected-normal-background:  rgba ( 0, 54, 66, 100 % );
-    border-color:                @foreground;
-    spacing:                     2;
-    separatorcolor:              rgba ( 0, 54, 66, 100 % );
-    urgent-background:           rgba ( 0, 43, 55, 100 % );
-    selected-urgent-background:  rgba ( 0, 54, 66, 100 % );
+    alternate-urgent-background: rgba ( 39, 50, 56, 100 % );
     alternate-urgent-foreground: @urgent-foreground;
     background-color:            rgba ( 0, 0, 0, 0 % );
-    alternate-active-foreground: @active-foreground;
-    active-background:           rgba ( 0, 43, 55, 100 % );
-    selected-active-background:  rgba ( 0, 54, 66, 100 % );
+    background:                  rgba (11, 11, 13, 0.95);
+    border-color:                @foreground;
+    bordercolor:                 rgba ( 39, 50, 56, 100 % );
+    foreground:                  rgba ( 193, 193, 193, 100 % );
+    lightbg:                     rgba ( 238, 232, 213, 100 % );
+    lightfg:                     rgba ( 88, 104, 117, 100 % );
+    normal-background:           rgba ( 39, 50, 56, 100 % );
+    normal-foreground:           @foreground;
+    selected-active-background:  rgba ( 57, 66, 73, 100 % );
+    selected-active-foreground:  rgba ( 128, 203, 196, 100 % );
+    selected-normal-background:  rgba ( 57, 66, 73, 100 % );
+    selected-normal-foreground:  rgba ( 208, 26, 58, 1 );
+    selected-urgent-background:  rgba ( 57, 66, 73, 100 % );
+    selected-urgent-foreground:  rgba ( 255, 24, 68, 100 % );
+    separatorcolor:              rgba ( 30, 37, 41, 100 % );
+    spacing:                     2;
+    urgent-background:           rgba ( 39, 50, 56, 100 % );
+    urgent-foreground:           rgba ( 255, 24, 68, 100 % );
+    transparent: rgba (0, 0, 0, 0);
     font: "Iosevka Regular 12";
 }
 #window {
     background-color: @background;
-    border:           1;
-    padding:          5;
+    border:           0;
+    height:           40%;
+    padding:          1% 1%;
+    transparency:     "screenshot";
+    width:            40%;
 }
 #mainbox {
     border:  0;
     padding: 0;
 }
 #message {
-    border:       1px dash 0px 0px ;
-    border-color: @separatorcolor;
-    padding:      1px ;
+    border:  0;
+    padding: 0;
 }
 #textbox {
     text-color: @foreground;
 }
+
+// Result block
 #listview {
     fixed-height: 0;
-    border:       2px dash 0px 0px ;
+    border:       0;
     border-color: @separatorcolor;
-    spacing:      2px ;
-    scrollbar:    true;
-    padding:      2px 0px 0px ;
+    spacing:      2px;
+    scrollbar:    false;
+    padding:      0;
 }
+
+// Result
 #element {
     border:  0;
-    padding: 1px ;
+    padding: 0;
 }
 #element.normal.normal {
-    background-color: @normal-background;
+    background-color: @transparent;
     text-color:       @normal-foreground;
 }
 #element.normal.urgent {
@@ -77,7 +95,7 @@
     text-color:       @active-foreground;
 }
 #element.selected.normal {
-    background-color: @selected-normal-background;
+    background-color: @transparent;
     text-color:       @selected-normal-foreground;
 }
 #element.selected.urgent {
@@ -89,7 +107,7 @@
     text-color:       @selected-active-foreground;
 }
 #element.alternate.normal {
-    background-color: @alternate-normal-background;
+    background-color: @transparent;
     text-color:       @alternate-normal-foreground;
 }
 #element.alternate.urgent {
@@ -100,14 +118,15 @@
     background-color: @alternate-active-background;
     text-color:       @alternate-active-foreground;
 }
+
 #scrollbar {
-    width:        4px ;
+    width:        0;
     border:       0;
-    handle-width: 8px ;
+    handle-width: 8px;
     padding:      0;
 }
 #sidebar {
-    border:       2px dash 0px 0px ;
+    border:       0;
     border-color: @separatorcolor;
 }
 #button.selected {
@@ -117,7 +136,7 @@
 #inputbar {
     spacing:    0;
     text-color: @normal-foreground;
-    padding:    1px ;
+    padding:    0 0 10px;
 }
 #case-indicator {
     spacing:    0;
@@ -132,11 +151,11 @@
     text-color: @normal-foreground;
 }
 #inputbar {
-    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
+    children: [prompt, textbox-prompt-colon, entry, case-indicator];
 }
 #textbox-prompt-colon {
     expand:     false;
     str:        ":";
-    margin:     0px 0.3em 0em 0em ;
+    margin:     0 0.3em 0 0;
     text-color: @normal-foreground;
 }
