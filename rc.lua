@@ -643,7 +643,7 @@ awful.rules.rules = {
     },
 
     -- Browsers
-    {rule_any = {class={"chromium", "Chromium", "chromium-browser", "Chromium-browser", "Navigator", "Firefox"}}, properties={ titlebars_enabled=false, maximized=true }},
+    {rule_any = {class={"chromium", "Chromium", "chromium-browser", "Chromium-browser", "Navigator", "Firefox", "vivaldi-stable", "Vivaldi-stable"}}, properties={ titlebars_enabled=false, maximized=true }},
 
     -- Dev
     {rule_any = {class = {"Emacs", "emacs", "terminator", "Terminator", "code", "Code", "sakura", "Sakura"}}, properties = {tag = tags[4], switchtotag=true, titlebars_enabled=false}},
