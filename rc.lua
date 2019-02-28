@@ -1,7 +1,7 @@
 --[[
 
    Ricardo's AwesomeWM Config
-   bitbuchet.com/warchiefx/awesome-config
+   github.com/warchiefx/awesome-config
 
 --]]
 
@@ -247,7 +247,7 @@ function on_screen_change(s)
 
    -- Make nitrogen restore the wallpaper
    awful.spawn.with_shell('nitrogen --restore')
-   -- awesome.restart()
+   awesome.restart()
 end
 
 -- {{{ Screen
