@@ -80,8 +80,7 @@ end
 
 awesome.connect_signal("startup", function()
                           get_default_app(default_apps, 'browser', 'text/html', 'firefox')
-                          run_once({ "nm-applet", "setxkbmap -layout us_intl -option ctrl:swapcaps", "autorandr --change",
-                                     "volumeicon", "gnome-screensaver", "solaar", "xbindkeys", "compton"})
+                          awful.spawn.with_shell("~/.config/awesome/autorun.sh")
 end)
 
 awesome.connect_signal("exit", function(reason_restart)
@@ -341,11 +340,11 @@ globalkeys = awful.util.table.join(
 
     -- Monitor handling
     awful.key({modkey}, "F7", function()
-          awful.util.spawn("autorandr --change", false)
+          awful.util.spawn("autorandr --change --force", false)
     end),
 
     awful.key({modkey, "Shift"}, "F7", function()
-          awful.util.spawn("autorandr -l mobile", false)
+          awful.util.spawn("autorandr -l mobile --force", false)
     end),
 
 
@@ -631,7 +630,7 @@ awful.rules.rules = {
 
     -- Titlebars
     { rule_any = { type = { "dialog", "normal" } },
-      properties = { titlebars_enabled = true } },
+      properties = { titlebars_d = true } },
     -- { rule_any = { maximized = true },
     --   properties = { titlebars_enabled = false }},
 
@@ -646,7 +645,7 @@ awful.rules.rules = {
     {rule_any = {class={"chromium", "Chromium", "chromium-browser", "Chromium-browser", "Navigator", "Firefox", "vivaldi-stable", "Vivaldi-stable"}}, properties={ titlebars_enabled=false, maximized=true }},
 
     -- Dev
-    {rule_any = {class = {"Emacs", "emacs", "terminator", "Terminator", "code", "Code", "sakura", "Sakura", "termite", "Termite"}}, properties = {tag = tags[4], switchtotag=true, titlebars_enabled=false}},
+    {rule_any = {class = {"Emacs", "emacs", "terminator", "Terminator", "code", "Code", "sakura", "Sakura", "termite", "Termite"}}, properties = {tag = tags[4], switchtotag=true, titlebars_enabled=false, gap=0}},
     {rule_any = {class = {"jetbrains-pycharm", "jetbrains-webstorm"}}, properties = {maximized = true, titlebars_enabled=false}},
 
     -- Email
