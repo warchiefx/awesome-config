@@ -98,7 +98,7 @@ end)
 local chosen_theme = "gray-wcx-aurora"
 local modkey       = "Mod4"
 local altkey       = "Mod1"
-local terminal     = "sakura" or "xterm"
+local terminal     = "termite" or "xterm"
 local editor       = os.getenv("EDITOR") or "nano" or "vi"
 local gui_editor   = "emacs"
 local runner       = "rofi -show combi -config ~/.config/awesome/rofi.conf"
@@ -646,7 +646,7 @@ awful.rules.rules = {
     {rule_any = {class={"chromium", "Chromium", "chromium-browser", "Chromium-browser", "Navigator", "Firefox", "vivaldi-stable", "Vivaldi-stable"}}, properties={ titlebars_enabled=false, maximized=true }},
 
     -- Dev
-    {rule_any = {class = {"Emacs", "emacs", "terminator", "Terminator", "code", "Code", "sakura", "Sakura"}}, properties = {tag = tags[4], switchtotag=true, titlebars_enabled=false}},
+    {rule_any = {class = {"Emacs", "emacs", "terminator", "Terminator", "code", "Code", "sakura", "Sakura", "termite", "Termite"}}, properties = {tag = tags[4], switchtotag=true, titlebars_enabled=false}},
     {rule_any = {class = {"jetbrains-pycharm", "jetbrains-webstorm"}}, properties = {maximized = true, titlebars_enabled=false}},
 
     -- Email
