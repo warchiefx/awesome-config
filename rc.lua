@@ -212,25 +212,25 @@ beautiful.init(theme_path)
 -- }}}
 
 -- {{{ Menu
-local myawesomemenu = {
-    { "hotkeys", function() return false, hotkeys_popup.show_help end },
-    { "manual", terminal .. " -e man awesome" },
-    { "edit config", string.format("%s -e %s %s", terminal, editor, awesome.conffile) },
-    { "restart", awesome.restart },
-    { "quit", function() awesome.quit() end }
-}
-awful.util.mymainmenu = freedesktop.menu.build({
-    icon_size = beautiful.menu_height or 16,
-    before = {
-        { "Awesome", myawesomemenu, beautiful.awesome_icon },
-        -- other triads can be put here
-    },
-    after = {
-        { "Open terminal", terminal },
-        -- other triads can be put here
-    }
-})
---menubar.utils.terminal = terminal -- Set the Menubar terminal for applications that require it
+-- local myawesomemenu = {
+--     { "hotkeys", function() return false, hotkeys_popup.show_help end },
+--     { "manual", terminal .. " -e man awesome" },
+--     { "edit config", string.format("%s -e %s %s", terminal, editor, awesome.conffile) },
+--     { "restart", awesome.restart },
+--     { "quit", function() awesome.quit() end }
+-- }
+-- awful.util.mymainmenu = freedesktop.menu.build({
+--     icon_size = beautiful.menu_height or 16,
+--     before = {
+--         { "Awesome", myawesomemenu, beautiful.awesome_icon },
+--         -- other triads can be put here
+--     },
+--     after = {
+--         { "Open terminal", terminal },
+--         -- other triads can be put here
+--     }
+-- })
+-- --menubar.utils.terminal = terminal -- Set the Menubar terminal for applications that require it
 -- }}}
 
 function on_screen_change(s)
@@ -265,7 +265,7 @@ awful.screen.connect_for_each_screen(function(s) beautiful.at_screen_connect(s) 
 
 -- {{{ Mouse bindings
 root.buttons(awful.util.table.join(
-    awful.button({ }, 3, function () awful.util.mymainmenu:toggle() end),
+    -- awful.button({ }, 3, function () awful.util.mymainmenu:toggle() end),
     awful.button({ }, 4, awful.tag.viewnext),
     awful.button({ }, 5, awful.tag.viewprev)
 ))
@@ -642,14 +642,20 @@ awful.rules.rules = {
     },
 
     -- Browsers
-    {rule_any = {class={"chromium", "Chromium", "chromium-browser", "Chromium-browser", "Navigator", "Firefox", "vivaldi-stable", "Vivaldi-stable"}}, properties={ titlebars_enabled=false, maximized=true }},
+    {rule_any = {class={"chromium", "Chromium", "chromium-browser", "Chromium-browser", "Navigator", "Firefox",
+                        "brave-browser", "Brave-browser", "vivaldi-stable", "Vivaldi-stable"}},
+     properties={ titlebars_enabled=false, maximized=true }},
 
     -- Dev
-    {rule_any = {class = {"Emacs", "emacs", "terminator", "Terminator", "code", "Code", "sakura", "Sakura", "termite", "Termite"}}, properties = {tag = tags[4], switchtotag=true, titlebars_enabled=false, gap=0}},
-    {rule_any = {class = {"jetbrains-pycharm", "jetbrains-webstorm"}}, properties = {maximized = true, titlebars_enabled=false}},
+    {rule_any = {class = {"Emacs", "emacs", "terminator", "Terminator", "code", "Code", "sakura", "Sakura",
+                          "termite", "Termite"}},
+     properties = {tag = tags[4], switchtotag=true, titlebars_enabled=false, gap=0}},
+    {rule_any = {class = {"jetbrains-pycharm", "jetbrains-webstorm"}},
+     properties = {maximized = true, titlebars_enabled=false}},
 
     -- Email
-    {rule_any = {class={"evolution", "Evolution", "mailspring", "Mailspring"}}, properties={ tag = tags[3], maximized=true }},
+    {rule_any = {class={"evolution", "Evolution", "mailspring", "Mailspring"}},
+     properties={ tag = tags[3], maximized=true }},
 
     -- Chat
     {rule_any = {class = {"TelegramDesktop", "slack", "Slack"}}, properties = {tag = tags[2]}},
