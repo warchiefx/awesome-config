@@ -8,7 +8,7 @@ local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/gray-wcx-aurora"
 -- theme.wallpaper                                 = theme.dir .. "/wall.png"
 theme.font                                      = "Iosevka Medium 10"
-theme.taglist_font                              = "Envy Code R 10"
+theme.taglist_font                              = "Iosevka Regular 10"
 theme.fg_normal                                 = "#666666"
 theme.fg_focus                                  = "#131112"
 theme.fg_urgent                                 = "#000000"
@@ -131,7 +131,7 @@ local temp = lain.widget.temp({
             widget:set_markup(markup.font(theme.font, markup(theme.fg_normal, "temp ") .. markup(theme.notification_fg, string.format("%.2d", coretemp_now) .. "°C ")))
          end
       end,
-      tempfile = "/sys/class/thermal/thermal_zone1/temp"
+      tempfile = "/sys/class/thermal/thermal_zone4/temp"
 })
 
 -- Battery
@@ -189,7 +189,7 @@ local systray = wibox.widget.systray()
 -- Separators
 local spr     = wibox.widget.textbox(' ')
 local arrl_dl = separators.arrow_left(theme.bg_focus, "alpha")
-local arrl_ld = separators.arrow_left("alpha", "#252d35")
+local arrl_ld = separators.arrow_left("alpha", "#111111")
 
 function theme.at_screen_connect(s)
    -- Quake application
@@ -246,7 +246,8 @@ function theme.at_screen_connect(s)
                      widget  = wibox.container.margin,
                   },
                   id     = "index_bg_role",
-                  bg     = '#20252c',
+                  fg     = '#ffffff',
+                  bg     = '#111111',
                   shape  = gears.shape.rectangle,
                   widget = wibox.container.background,
                },
@@ -254,7 +255,7 @@ function theme.at_screen_connect(s)
                   {
                      id     = 'icon_role',
                      widget = wibox.widget.imagebox,
-                  bg     = '#20252c',
+                  bg     = '#000000',
                   },
                   margins = 1,
                   widget  = wibox.container.margin,
@@ -325,8 +326,8 @@ function theme.at_screen_connect(s)
          spr,
          clock,
          spr,
-         arrl_ld,
-         wibox.container.background(s.mylayoutbox, "#252d35"),
+         -- arrl_ld,
+         wibox.container.background(s.mylayoutbox, "#000000fe"),
       },
    }
 end
