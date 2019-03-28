@@ -12,8 +12,8 @@ theme.taglist_font                              = "Iosevka Regular 10"
 theme.fg_normal                                 = "#888888"
 theme.fg_focus                                  = "#ffffff"
 theme.fg_urgent                                 = "#000000"
-theme.bg_normal                                 = "#00000055"
-theme.bg_focus                                  = "#D0D0D055"
+theme.bg_normal                                 = "#000000aa"
+theme.bg_focus                                  = "#D0D0D0aa"
 theme.bg_urgent                                 = "#db695b"
 theme.bg_systray                                = theme.bg_normal
 theme.border_width                              = 0
@@ -327,7 +327,7 @@ function theme.at_screen_connect(s)
          clock,
          spr,
          -- arrl_ld,
-         wibox.container.background(s.mylayoutbox, "#00000055"),
+         wibox.container.background(s.mylayoutbox, "#000000aa"),
       },
    }
 end
