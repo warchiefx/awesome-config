@@ -9,11 +9,11 @@ theme.dir                                       = os.getenv("HOME") .. "/.config
 -- theme.wallpaper                                 = theme.dir .. "/wall.png"
 theme.font                                      = "Iosevka Medium 10"
 theme.taglist_font                              = "Iosevka Regular 10"
-theme.fg_normal                                 = "#666666"
-theme.fg_focus                                  = "#131112"
+theme.fg_normal                                 = "#888888"
+theme.fg_focus                                  = "#ffffff"
 theme.fg_urgent                                 = "#000000"
-theme.bg_normal                                 = "#000000fe"
-theme.bg_focus                                  = "#D0D0D0fe"
+theme.bg_normal                                 = "#00000055"
+theme.bg_focus                                  = "#D0D0D055"
 theme.bg_urgent                                 = "#db695b"
 theme.bg_systray                                = theme.bg_normal
 theme.border_width                              = 0
@@ -27,7 +27,7 @@ theme.titlebar_fg_normal                        = theme.fg_normal
 theme.titlebar_fg_focus                         = theme.fg_normal
 -- theme.taglist_fg_occupied                       = ""
 -- theme.taglist_bg_occupied                       = ""
-theme.taglist_fg_empty                          = "#2e2e2e"
+theme.taglist_fg_empty                          = "#4e4e4e"
 -- theme.taglist_bg_empty                          = ""
 theme.menu_height                               = 18
 theme.menu_width                                = 140
@@ -247,7 +247,7 @@ function theme.at_screen_connect(s)
                   },
                   id     = "index_bg_role",
                   fg     = '#ffffff',
-                  bg     = '#111111',
+                  bg     = '#11111199',
                   shape  = gears.shape.rectangle,
                   widget = wibox.container.background,
                },
@@ -327,7 +327,7 @@ function theme.at_screen_connect(s)
          clock,
          spr,
          -- arrl_ld,
-         wibox.container.background(s.mylayoutbox, "#000000fe"),
+         wibox.container.background(s.mylayoutbox, "#00000055"),
       },
    }
 end
