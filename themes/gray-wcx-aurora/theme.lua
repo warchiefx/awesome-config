@@ -12,8 +12,8 @@ theme.taglist_font                              = "Iosevka Regular 10"
 theme.fg_normal                                 = "#888888"
 theme.fg_focus                                  = "#ffffff"
 theme.fg_urgent                                 = "#000000"
-theme.bg_normal                                 = "#000000aa"
-theme.bg_focus                                  = "#D0D0D0aa"
+theme.bg_normal                                 = "#000000ee"
+theme.bg_focus                                  = "#303030ee"
 theme.bg_urgent                                 = "#db695b"
 theme.bg_systray                                = theme.bg_normal
 theme.border_width                              = 0
@@ -131,7 +131,7 @@ local temp = lain.widget.temp({
             widget:set_markup(markup.font(theme.font, markup(theme.fg_normal, "temp ") .. markup(theme.notification_fg, string.format("%.2d", coretemp_now) .. "°C ")))
          end
       end,
-      tempfile = "/sys/class/thermal/thermal_zone4/temp"
+      tempfile = "/sys/class/thermal/thermal_zone1/temp"
 })
 
 -- Battery
@@ -327,7 +327,7 @@ function theme.at_screen_connect(s)
          clock,
          spr,
          -- arrl_ld,
-         wibox.container.background(s.mylayoutbox, "#000000aa"),
+         wibox.container.background(s.mylayoutbox, "#000000ee"),
       },
    }
 end
