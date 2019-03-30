@@ -7,6 +7,7 @@ function run {
   fi
 }
 
+run autorandr -c
 run nm-applet
 run volumeicon
 run gnome-screensaver
