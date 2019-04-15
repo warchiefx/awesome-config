@@ -546,7 +546,7 @@ clientkeys = awful.util.table.join(
             c.minimized = true
         end ,
         {description = "minimize", group = "client"}),
-    awful.key({ modkey,  u        }, "m",
+    awful.key({ modkey }, "m",
         function (c)
             c.maximized = not c.maximized
             c:raise()
