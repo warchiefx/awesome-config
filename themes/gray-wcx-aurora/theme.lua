@@ -12,7 +12,7 @@ theme.taglist_font                              = "Iosevka Regular 10"
 theme.fg_normal                                 = "#888888"
 theme.fg_focus                                  = "#ffffff"
 theme.fg_urgent                                 = "#000000"
-theme.bg_normal                                 = "#000000ee"
+theme.bg_normal                                 = "#000000"
 theme.bg_focus                                  = "#303030ee"
 theme.bg_urgent                                 = "#db695b"
 theme.bg_systray                                = theme.bg_normal
@@ -159,7 +159,7 @@ local bat = lain.widget.bat({
 })
 
 local function humanize_bytes(value)
-   suff = {"T", "G", "M", "K", "B"}
+   local suff = {"T", "G", "M", "K", "B"}
    value = tonumber(value)
    while(value > 1024 and #suff > 0) do
       value = value / 1024
@@ -327,7 +327,7 @@ function theme.at_screen_connect(s)
          clock,
          spr,
          -- arrl_ld,
-         wibox.container.background(s.mylayoutbox, "#000000ee"),
+         wibox.container.background(s.mylayoutbox, "#000000"),
       },
    }
 end
