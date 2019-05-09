@@ -2,6 +2,8 @@ local gears = require("gears")
 local lain  = require("lain")
 local awful = require("awful")
 local wibox = require("wibox")
+local xresources = require("beautiful.xresources")
+local dpi = xresources.apply_dpi
 local os    = { getenv = os.getenv }
 
 local theme                                     = {}
@@ -20,6 +22,7 @@ theme.border_width                              = 0
 theme.border_normal                             = "#3F3F3F"
 theme.border_focus                              = "#0e9e97"
 theme.border_marked                             = "#333333"
+theme.border_radius                             = dpi(6)
 theme.tasklist_bg_focus                         = "#1A1A1A"
 theme.titlebar_bg_focus                         = theme.bg_normal
 theme.titlebar_bg_normal                        = theme.bg_normal
