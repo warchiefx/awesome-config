@@ -133,10 +133,10 @@ awful.layout.layouts = {
 }
 
 local tags = sharedtags({
-    { name = "web", layout = awful.layout.suit.floating },
-    { name = "chat", layout = awful.layout.suit.floating },
-    { name = "mail", layout = awful.layout.suit.floating },
-    { name = "dev", layout = awful.layout.suit.floating },
+    { name = "web", layout = awful.layout.suit.max },
+    { name = "chat", layout = awful.layout.suit.max },
+    { name = "mail", layout = awful.layout.suit.max },
+    { name = "dev", layout = awful.layout.suit.max },
     { name = "work", layout = awful.layout.suit.floating },
     { name = "misc", screen = 2, layout = awful.layout.suit.floating },
     { name = "media", screen = 2, layout = awful.layout.floating },
@@ -643,7 +643,7 @@ awful.rules.rules = {
 
     -- Browsers
     {rule_any = {class={"chromium", "Chromium", "chromium-browser", "Chromium-browser", "Navigator", "Firefox",
-                        "brave-browser", "Brave-browser", "vivaldi-stable", "Vivaldi-stable"}},
+                        "Opera", "brave-browser", "Brave-browser", "vivaldi-stable", "Vivaldi-stable"}},
      properties={ titlebars_enabled=false, maximized=true }},
 
     -- Dev
@@ -831,4 +831,98 @@ if beautiful.border_radius ~= 0 then
     client.connect_signal("property::fullscreen", no_round_corners)
     client.connect_signal("property::maximized", no_round_corners)
 end
+
+-- Save and restore tags, when monitor setup is changed
+local naughty = require("naughty")
+local tag_store = {}
+tag.connect_signal("request::screen", function(t)
+  local fallback_tag = nil
+
+  -- find tag with same name on any other screen
+  for other_screen in screen do
+    if other_screen ~= t.screen then
+      fallback_tag = awful.tag.find_by_name(other_screen, t.name)
+      if fallback_tag ~= nil then
+        break
+      end
+    end
+  end
+
+  -- no tag with same name exists, chose random one
+  if fallback_tag == nil then
+    fallback_tag = awful.tag.find_fallback()
+  end
+
+  if not (fallback_tag == nil) then
+    local output = next(t.screen.outputs)
+
+    if tag_store[output] == nil then
+      tag_store[output] = {}
+    end
+
+    clients = t:clients()
+    tag_store[output][t.name] = clients
+
+    for _, c in ipairs(clients) do
+      c:move_to_tag(fallback_tag)
+    end
+  end
+end)
+
+screen.connect_signal("added", function(s)
+  local output = next(s.outputs)
+  naughty.notify({ text = output .. " Connected" })
+
+  tags = tag_store[output]
+  if not (tags == nil) then
+    naughty.notify({ text = "Restoring Tags" })
+
+    for _, tag in ipairs(s.tags) do
+      clients = tags[tag.name]
+      if not (clients == nil) then
+        for _, client in ipairs(clients) do
+          client:move_to_tag(tag)
+        end
+      end
+    end
+  end
+end)
+
+-- -- Titlebars only on floating windows
+-- client.connect_signal("property::floating", function(c)
+--     if c.floating then
+--         awful.titlebar.show(c)
+--     else
+--         awful.titlebar.hide(c)
+--     end
+-- end)
+
+-- client.connect_signal("manage", function(c)
+--     if c.floating or c.first_tag.layout.name == "floating" then
+--         awful.titlebar.show(c)
+--     else
+--         awful.titlebar.hide(c)
+--     end
+-- end)
+
+-- tag.connect_signal("property::layout", function(t)
+--     local clients = t:clients()
+--     for k,c in pairs(clients) do
+--         if c.floating or c.first_tag.layout.name == "floating" then
+--             awful.titlebar.show(c)
+--         else
+--             awful.titlebar.hide(c)
+--         end
+--     end
+-- end)
+
+-- screen.connect_signal("arrange", function(s)
+--     for _, c in pairs(s.clients) do
+--         if #s.tiled_clients == 1 and c.floating == false or c.maximized then
+--            awful.titlebar.hide(c)
+--         elseif #s.tiled_clients > 1 then
+--            awful.titlebar.show(c)
+--         end
+--     end
+-- end)
 -- }}}
