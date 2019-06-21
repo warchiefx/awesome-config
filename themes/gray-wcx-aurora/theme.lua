@@ -69,7 +69,7 @@ theme.widget_mail_on                            = theme.dir .. "/icons/mail_on.p
 theme.tasklist_plain_task_name                  = true
 theme.taglist_spacing                           = 5
 theme.tasklist_disable_icon                     = true
-theme.useless_gap                               = 0
+theme.useless_gap                               = 2
 theme.titlebar_close_button_focus               = theme.dir .. "/icons/titlebar/close_focus.png"
 theme.titlebar_close_button_normal              = theme.dir .. "/icons/titlebar/close_normal.png"
 theme.titlebar_ontop_button_focus_active        = theme.dir .. "/icons/titlebar/ontop_focus_active.png"
@@ -127,15 +127,15 @@ local cpu = lain.widget.cpu({
       end
 })
 
--- Coretemp
-local temp = lain.widget.temp({
-      settings = function()
-         if coretemp_now ~= nil then
-            widget:set_markup(markup.font(theme.font, markup(theme.fg_normal, "temp ") .. markup(theme.notification_fg, string.format("%.2d", coretemp_now) .. "°C ")))
-         end
-      end,
-      tempfile = "/sys/class/thermal/thermal_zone1/temp"
-})
+-- -- Coretemp
+-- local temp = lain.widget.temp({
+--       settings = function()
+--          if coretemp_now ~= nil then
+--             widget:set_markup(markup.font(theme.font, markup(theme.fg_normal, "temp ") .. markup(theme.notification_fg, string.format("%.2d", coretemp_now) .. "°C ")))
+--          end
+--       end,
+--       tempfile = "/sys/class/thermal/thermal_zone1/temp"
+-- })
 
 -- Battery
 local baticon = wibox.widget.imagebox(theme.widget_battery)
@@ -319,7 +319,7 @@ function theme.at_screen_connect(s)
          spr,
          wibox.container.background(cpu.widget),
          mem.widget,
-         wibox.container.background(temp.widget),
+         -- wibox.container.background(temp.widget),
          wibox.container.background(net.widget),
          spr,
          baticon,
