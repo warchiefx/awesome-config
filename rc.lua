@@ -80,6 +80,7 @@ end
 
 awesome.connect_signal("startup", function()
                           get_default_app(default_apps, 'browser', 'text/html', 'firefox')
+                          get_default_app(default_apps, 'telegram', 'x-scheme-handler/tg', 'telegram-desktop')
                           awful.spawn.with_shell("~/.config/awesome/autorun.sh")
 end)
 
@@ -479,7 +480,7 @@ globalkeys = awful.util.table.join(
     -- User programs
     awful.key({ modkey }, "e", function () run_once({gui_editor}) end),
     awful.key({ modkey }, "w", function () awful.spawn(default_apps['browser']) end),
-    awful.key({ modkey }, "p", function () run_once({"flatpak run org.telegram.desktop"}) end),
+    awful.key({ modkey }, "p", function () awful.spawn(default_apps['telegram']) end),
     awful.key({ modkey }, "t", function () run_once({"evolution"}) end),
     awful.key({ modkey }, "s", function () run_once({"flatpak run com.slack.Slack"}) end),
     awful.key({ modkey }, "a", function () run_once({"flatpak run com.spotify.Client"}) end),
