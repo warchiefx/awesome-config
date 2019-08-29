@@ -80,7 +80,7 @@ end
 
 awesome.connect_signal("startup", function()
                           get_default_app(default_apps, 'browser', 'text/html', 'firefox')
-                          get_default_app(default_apps, 'telegram', 'x-scheme-handler/tg', 'telegram-desktop')
+                          get_default_app(default_apps, 'telegram', 'x-scheme-handler/tg', 'flatpak run org.telegram.desktop')
                           awful.spawn.with_shell("~/.config/awesome/autorun.sh")
 end)
 
