@@ -319,10 +319,10 @@ globalkeys = awful.util.table.join(
 
     -- Brightness Keys
     awful.key({}, "XF86MonBrightnessUp", function()
-          awful.util.spawn("xbacklight -ctrl intel_backlight -inc 10", false)
+          awful.util.spawn("acpilight -ctrl intel_backlight -inc 10", false)
     end),
     awful.key({}, "XF86MonBrightnessDown", function()
-          awful.util.spawn("xbacklight -ctrl intel_backlight -dec 10", false)
+          awful.util.spawn("acpilight -ctrl intel_backlight -dec 10", false)
     end),
 
     -- Media Keys
