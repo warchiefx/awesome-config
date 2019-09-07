@@ -603,10 +603,16 @@ for i = 1, 10 do
     )
 end
 
-clientbuttons = awful.util.table.join(
+local clientbuttons = awful.util.table.join(
     awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
     awful.button({ modkey }, 1, awful.mouse.client.move),
     awful.button({ modkey }, 3, awful.mouse.client.resize))
+
+local clientbuttons_jetbrains = gears.table.join(
+    awful.button({ modkey }, 1, awful.mouse.client.move),
+    awful.button({ modkey }, 3, awful.mouse.client.resize)
+)
+
 
 -- Set keys
 root.keys(globalkeys)
@@ -666,6 +672,14 @@ awful.rules.rules = {
 
     -- Zeal
     {rule = {class = "Zeal"}, properties={ tag=tags[8], switchtotag=true,}},
+
+    -- Jetbrains apps
+    {rule = {class = "jetbrains-.*",},
+     properties = { focus = true, buttons = clientbuttons_jetbrains }
+    },
+    {rule = {class = "jetbrains-.*", name = "win.*"},
+     properties = { titlebars_enabled = false, focusable = false, focus = true, floating = true, placement = awful.placement.restore }
+    },
 }
 -- }}}
 
