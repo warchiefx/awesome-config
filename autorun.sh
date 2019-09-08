@@ -14,4 +14,4 @@ run gnome-screensaver
 run solaar
 run xbindkeys
 run compton
-run setxkbmap -layout us_intl -option ctrl:swapcaps
+run setxkbmap -layout us -variant altgr-intl -option ctrl:swapcaps
