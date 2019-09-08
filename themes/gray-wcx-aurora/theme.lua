@@ -128,14 +128,14 @@ local cpu = lain.widget.cpu({
 })
 
 -- -- Coretemp
--- local temp = lain.widget.temp({
---       settings = function()
---          if coretemp_now ~= nil then
---             widget:set_markup(markup.font(theme.font, markup(theme.fg_normal, "temp ") .. markup(theme.notification_fg, string.format("%.2d", coretemp_now) .. "°C ")))
---          end
---       end,
---       tempfile = "/sys/class/thermal/thermal_zone1/temp"
--- })
+local temp = lain.widget.temp({
+      settings = function()
+         if coretemp_now ~= nil then
+            widget:set_markup(markup.font(theme.font, markup(theme.fg_normal, "temp ") .. markup(theme.notification_fg, string.format("%.2d", coretemp_now) .. "°C ")))
+         end
+      end,
+      tempfile = "/sys/class/thermal/thermal_zone0/temp"
+})
 
 -- Battery
 local baticon = wibox.widget.imagebox(theme.widget_battery)
@@ -319,7 +319,7 @@ function theme.at_screen_connect(s)
          spr,
          wibox.container.background(cpu.widget),
          mem.widget,
-         -- wibox.container.background(temp.widget),
+         wibox.container.background(temp.widget),
          wibox.container.background(net.widget),
          spr,
          baticon,
