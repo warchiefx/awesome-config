@@ -68,9 +68,10 @@ end
 
 local function get_default_app(tbl, var, mimetype, default)
    awful.spawn.easy_async('xdg-mime query default '..mimetype, function(stdout, stderr, reason, exit_code)
-                             app = nil
+                             local app = nil
                              if exit_code == 0 then
-                                app = 'gtk-launch ' .. stdout
+                                local app_name, num = stdout:gsub(".desktop", "")
+                                app = 'gtk-launch ' .. app_name
                                 tbl[var] = app
                              else
                                 tbl[var] = default
